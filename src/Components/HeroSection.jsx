@@ -2,7 +2,7 @@ import React from 'react'
 import IMG from '../Images/videoconfo1.png'
 import { useDisclosure } from '@chakra-ui/react'
 import { MdContentCopy } from "react-icons/md";
-import {motion} from "framer-motion";
+
 import {
     Modal,
     ModalOverlay,
@@ -66,5 +66,5 @@ const HeroSection = () => {
     </div>
   )
 }
-
+ 
 export default HeroSection
