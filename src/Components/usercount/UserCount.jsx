@@ -7,9 +7,10 @@ import image from "../../Images/vc.png"
 const UserCount = () => {
     return (
         <section className="h-wrapper">
-            <div className="total">
-
+            <div className="total ">
+                {/* Left */}
                 <div className="h-left">
+                    {/* left title */}
                     <div className="hero-title">
                         <div className="orange-circle" />
                         <motion.h1
@@ -24,55 +25,52 @@ const UserCount = () => {
                         </motion.h1>
                         <div className="blue-circle" />
                     </div>
-
-                    <div>
-                        <div className=" stats row">
-                            <div className='stats1 col'>
+                    
+                    
+                        <div className="stats w-full grid grid-cols-2 gap-10 z-10 mt-10">
+                            
                                 <div className="stat">
-                                    <span ><CountUp start={8800} end={9000} duration={4} />
+                                    <span >
+                                        <CountUp start={8800} end={9000} duration={4} />
                                         <span>+</span>
                                     </span>
-                                    <span className="secondaryText">User<br /> Globally</span>
+                                    <span className="secondaryText">User Globally</span>
 
                                 </div>
                                 <div className=" stat">
-                                    <span ><CountUp start={120} end={150} duration={4} />
+                                    <span >
+                                        <CountUp start={120} end={150} duration={4} />
                                         <span>+</span>
                                     </span>
                                     <span className="secondaryText">Countries Served</span>
                                 </div>
-
-                            </div>
-                            <div className='stats2 col'>
                                 <div className=" stat">
-                                    <span ><CountUp start={20} end={27} duration={4} />
+                                    <span >
+                                        <CountUp start={20} end={27} duration={4} />
                                         <span>+</span>
                                     </span>
                                     <span className="secondaryText">Awards</span>
                                 </div>
                                 <div className=" stat">
-                                    <span ><CountUp start={20} end={27} duration={4} />
+                                    <span >
+                                        <CountUp start={20} end={27} duration={4} />
                                         <span>+</span>
                                     </span>
                                     <span className="secondaryText">Years in Business</span>
                                 </div>
-
-                            </div>
-                            <div className='stats3 col'>
                                 <div className=" stat">
-                                    <span ><CountUp start={200} end={265} duration={4} />
+                                    <span >
+                                        <CountUp start={200} end={265} duration={4} />
                                         <span>+</span>
                                     </span>
                                     <span className="secondaryText">Employee</span>
                                 </div>
-                                <button className='btn btn-primary'>More about Us</button>
-                            </div>
-
-
                         </div>
+                        <button className='btn btn-primary w-40 mb-10'>More about Us</button>
 
-                    </div>
+                    
                 </div>
+                {/* Right */}
                 <div className=" h-right">
                     <motion.div
                         initial={{ x: "7rem", opacity: 0 }}

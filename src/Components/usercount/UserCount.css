@@ -6,20 +6,23 @@
     padding-top: 1rem;
     padding: 5px;
     background: cornflowerblue;
-   
 }
 .h-left{
     margin-top: 3rem;
-    gap: 3rem;
+    /* gap: 3rem; */
     display: flex;
-    flex-direction: column;
+    flex-flow: wrap;
+    /* flex-direction: column; */
+    width: 40%;
+    margin-left: 0.1vmax;
 }
 .h-right{
     margin-top: 3rem;
-    gap: 3rem;
+    /* gap: 3rem; */
+    width: 50%;
 }
 .hero-title{
-    
+    width: 100%;
     position: relative;
     z-index: 1;
 }
@@ -53,10 +56,12 @@
 
 
 .stats{
- display: flex;
+ /* display: flex; */
+ 
  color: aliceblue;
+ width: 100%;
 }
-.stats1{
+/* .stats1{
     display: flex;
     flex-direction: column;
     width:100%;
@@ -71,7 +76,7 @@
     justify-content: space-between;
     gap: 2rem;
    
-}
+} */
 .stat{
     display: flex;
     align-items: center;
@@ -86,6 +91,56 @@
     margin-top: 2.5rem;
     outline:solid 2px aliceblue;
     background: none;
+}
+
+@media (max-width: 600px) {
+    .total{
+        flex-flow: wrap;
+        gap: 0;
+    }
+    .h-left{
+        justify-content: center;
+    }
+    .h-left,.h-right{
+        width: 100%;
+        gap: 0;
+    }
+    /* .h-right{
+        width: 100%;
+
+    } */
+    .hero-title{
+        text-align: center;
+    }
+    /* .stats1{
+        flex-flow: column;
+        justify-content: center;
+        gap: 0;
+    }
+    .stats2{
+        flex-flow: column;
+        justify-content: center;
+        gap: 0;
+    } */
+    .stats{
+        gap: 0;
+        flex-flow: wrap;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr;
+        display: flex;
+        justify-content: center;
+    }
+    .stat{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    .stat span{
+        font-size: 2.8vmax;
+    }
 }
 
 
