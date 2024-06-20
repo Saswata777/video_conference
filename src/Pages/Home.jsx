@@ -5,6 +5,7 @@ import UserCount from '../Components/usercount/UserCount'
 import Industries from '../Components/industry/Industries'
 import BuinessPlan from '../Components/businessplan/BusinessPlan'
 import Foooter from '../Components/Foooter'
+import Privacy from '../Components/Privacy'
 
 
 const Home = () => {
@@ -15,6 +16,7 @@ const Home = () => {
         <UserCount/>
         <Industries/>
         <BuinessPlan/>
+        <Privacy/>
         <Foooter/>
     </div>
   )
