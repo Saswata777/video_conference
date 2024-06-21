@@ -2,8 +2,8 @@ import React from 'react';
 
 const Privacy = () => {
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-200">
-      <div className="max-w-xl mx-auto p-6 bg-white shadow-md rounded-md">
+    <div className="flex flex-wrap  justify-center items-center min-h-screen bg-gray-200">
+      <div className="max-w-xl ms-4 me-4  p-6 bg-white shadow-md rounded-md">
         <h1 className="text-3xl font-bold mb-4 text-center text-gray-900">Privacy Policy</h1>
         <img src="https://www.termsfeed.com/public/uploads/2024/06/privacy-policy-individual.jpg" alt="Privacy Policy Template" className="mx-auto mb-6" />
 
@@ -16,7 +16,7 @@ const Privacy = () => {
         </p>
       </div>
 
-      <div className="max-w-xl mx-auto p-6 bg-white shadow-md rounded-md mt-8 text-gray-900">
+      <div className="max-w-xl ms-4 me-4  p-6 bg-white shadow-md rounded-md mt-8 text-gray-900">
         <p className="text-3xl font-bold mb-4 text-center font-serif">
           Ready to do your best work?
         </p>
