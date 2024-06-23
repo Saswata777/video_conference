@@ -1,7 +1,8 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom'
 
 // Functional component representing the sign-in form
-const SignInForm = () => {
+const LogInForm = () => {
   // State to manage dark mode
   const [darkMode, setDarkMode] = useState(false);
 
@@ -24,7 +25,7 @@ const SignInForm = () => {
         </a>
 
         <div className={`p-8 rounded-2xl ${inputBgColor} shadow ${textColor}`}>
-          <h2 className={`text-center text-2xl font-bold ${textColor}`}>Sign in</h2>
+          <h2 className={`text-center text-2xl font-bold ${textColor}`}>Login</h2>
           <form className="mt-8 space-y-4">
             <div>
               <label className={`text-sm mb-2 block ${textColor}`}>User name</label>
@@ -75,11 +76,11 @@ const SignInForm = () => {
 
             <div className="!mt-8">
               <button type="button" className={`w-full py-3 px-4 text-sm tracking-wide rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none ${textColor}`}>
-                Sign in
+                Login
               </button>
             </div>
 
-            <p className={`text-sm !mt-8 text-center ${textColor}`}>Don't have an account? <a href="javascript:void(0);" className={`text-blue-600 hover:underline ml-1 whitespace-nowrap font-semibold ${textColor}`}>Register here</a></p>
+            <p className={`text-sm !mt-8 text-center ${textColor}`}>Don't have an account? <Link to="/signin" className={`text-blue-600 hover:underline ml-1 whitespace-nowrap font-semibold ${textColor}`}>Sign in</Link></p>
           </form>
         </div>
       </div>
@@ -92,4 +93,4 @@ const SignInForm = () => {
   );
 };
 
-export default SignInForm;
+export default LogInForm;
