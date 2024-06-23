@@ -25,7 +25,7 @@
   width: 100%;
   display: flex;
   gap:1.5rem;
-  
+  justify-content: center;
 }
 .ih1 {
     font-size: 3vmax;
@@ -48,14 +48,14 @@
     background-color: #fff;
     transition: all .3s;
     /* width: 100%; */
-    width: 100%;
+    width: 45%;
     
-    font-size: 32px;
+    font-size: 3vmax;
     font-weight: 150px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   }
 .box h2{
-  font-size: 4vmax;
+  font-size: 3.5vmax;
 }
 
 
@@ -87,6 +87,11 @@
 .right-sec{
   width: 100%;
 }
-
+.box{
+  width: 90%;
+}
+.box h2{
+  font-size: 4vmax;
+}
 
 }
