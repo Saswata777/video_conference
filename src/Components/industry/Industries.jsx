@@ -21,7 +21,7 @@ const Industries = () => {
         {/* right */}
         <div className='right-sec '>
             <div className='industries row '>
-                <div className='box'>
+                <div className='box '>
                     <IoSchool />
                     <h2>Education</h2>
                 </div>

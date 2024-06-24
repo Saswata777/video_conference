@@ -1,6 +1,7 @@
 .container{
     display: flex;
     margin-top: 1rem;
+    margin-bottom: 1rem;
     width: 100vw;
 }
 .left-sec{
@@ -25,7 +26,7 @@
   width: 100%;
   display: flex;
   gap:1.5rem;
-  
+  justify-content: center;
 }
 .ih1 {
     font-size: 3vmax;
@@ -48,14 +49,14 @@
     background-color: #fff;
     transition: all .3s;
     /* width: 100%; */
-    width: 100%;
+    width: 40%;
     
     font-size: 32px;
     font-weight: 150px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   }
 .box h2{
-  font-size: 4vmax;
+  font-size: 2vmax;
 }
 
 
