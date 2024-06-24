@@ -1,4 +1,5 @@
 import React from 'react';
+import './footer.css'
 
 const Foooter = () => {
   return (
@@ -77,23 +78,23 @@ const Foooter = () => {
               </span>
               TW Elements
             </h6>
-            <p>
+            <p className='Here text-start'>
               Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
             </p>
           </div>
           <div>
             <h6 className="mb-4 flex justify-center font-semibold uppercase md:justify-start">Products</h6>
-            <p className="mb-4"><a href="#!">Angular</a></p>
-            <p className="mb-4"><a href="#!">React</a></p>
-            <p className="mb-4"><a href="#!">Vue</a></p>
-            <p><a href="#!">Laravel</a></p>
+            <p className="angular mb-4 flex justify-start"><a href="#!">Angular</a></p>
+            <p className="react mb-4 flex justify-start"><a href="#!">React</a></p>
+            <p className="vue mb-4 flex justify-start"><a href="#!">Vue</a></p>
+            <p className='laravel flex justify-start'><a href="#!">Laravel</a></p>
           </div>
           <div>
             <h6 className="mb-4 flex justify-center font-semibold uppercase md:justify-start">Useful links</h6>
-            <p className="mb-4"><a href="#!">Pricing</a></p>
-            <p className="mb-4"><a href="#!">Settings</a></p>
-            <p className="mb-4"><a href="#!">Orders</a></p>
-            <p><a href="#!">Help</a></p>
+            <p className="pricing mb-4 flex justify-start"><a href="#!">Pricing</a></p>
+            <p className="setting mb-4 flex justify-start"><a href="#!">Settings</a></p>
+            <p className="orders mb-4 flex justify-start"><a href="#!">Orders</a></p>
+            <p className='help flex justify-start'><a href="#!">Help</a></p>
           </div>
           <div>
             <h6 className="mb-4 flex justify-center font-semibold uppercase md:justify-start">Contact</h6>
@@ -111,8 +112,8 @@ const Foooter = () => {
               </span>
               2020 XYZ Pte. Ltd.
             </p>
-            <p className="mb-4">info@example.com</p>
-            <p>+1 234 5678</p>
+            <p className="mb-4 text-start">info@example.com</p>
+            <p className='Here text-start'>+1 234 5678</p>
           </div>
         </div>
       </div>

@@ -3,8 +3,8 @@ import "./BusinessPlan.css"
 
 const BusinessPlan = () => {
   return (
-    <div className='containeri'>
-    <div className='title'>
+    <div className='containeri '>
+    <div className='title mt-10'>
         <h1 className=''>Select a plan that scales with your Business</h1>
         <button className='btn but text-white'>Sign Up for Free</button>
     </div>
