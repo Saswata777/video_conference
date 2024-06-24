@@ -6,7 +6,7 @@ import image from "../../Images/vc.png"
 
 const UserCount = () => {
     return (
-        <section className="h-wrapper">
+        <section className="h-wrapper w-100">
             <div className="total ">
                 {/* Left */}
                 <div className="h-left">
