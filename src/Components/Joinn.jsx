@@ -7,7 +7,7 @@ import { MdCallEnd } from "react-icons/md";
 const Joinn = () => {
     return (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:h-[50px]">
-            <div className="md:col-span-2 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 p-6 rounded-lg shadow-md">
+            <div className="md:col-span-2 bg-[#0c4a6e] p-6 rounded-lg shadow-md">
                 <img src={videoCall} alt='video call' className="w-100 h-auto rounded-lg shadow-lg" />
                 
                 <div className='flex justify-center mt-5 space-x-12'>
@@ -17,14 +17,15 @@ const Joinn = () => {
                 </div>
             </div>
 
-            <div className="md:col-span-1 bg-gradient-to-r from-green-400 via-blue-500 to-purple-500 p-6 rounded-lg shadow-md ">
-                <div className="flex justify-center min-h-screen bg-white-100">
-                    <div className="w-full max-w-md p-10 bg-white bg-opacity-80 shadow-md rounded-lg h-100">
+            <div className="md:col-span-1 bg-[#38bdf8] p-6 rounded-lg shadow-md">
+                <div className="flex items-center justify-center min-h-screen">
+                    <div className="w-full max-w-md p-10 bg-[#134e4a] bg-opacity-80 shadow-md rounded-lg h-100 ">
                         <div className="mb-4">
                             <input
-                                type="email"
-                                placeholder="Enter your email"
+                                type="text"
+                                placeholder="Enter your name"
                                 className="w-full px-3 py-2 mb-2 border border-gray-300 rounded focus:outline-none focus:ring focus:border-blue-300"
+                                
                             />
                         </div>
                         <div className="mb-4">
@@ -45,3 +46,4 @@ const Joinn = () => {
 };
 
 export default Joinn;
+
