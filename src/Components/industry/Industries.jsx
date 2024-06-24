@@ -21,7 +21,7 @@ const Industries = () => {
         {/* right */}
         <div className='right-sec '>
             <div className='industries row '>
-                <div className='box'>
+                <div className='box '>
                     <IoSchool />
                     <h2>Education</h2>
                 </div>
@@ -43,7 +43,7 @@ const Industries = () => {
                 </div>
                 <div className='box'>
                     <GiHealing /> 
-                    <h2>Health</h2>
+                    <h2>NGO</h2>
                 </div>
             </div>
         </div>
