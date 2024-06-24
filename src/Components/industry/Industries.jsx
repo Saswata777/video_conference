@@ -43,7 +43,7 @@ const Industries = () => {
                 </div>
                 <div className='box'>
                     <GiHealing /> 
-                    <h2>Health</h2>
+                    <h2>NGO</h2>
                 </div>
             </div>
         </div>
