@@ -23,9 +23,9 @@ const HeroSection = () => {
                   Create Meeting
                   <svg className="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" >
                     <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" ></path>
-                  </svg>
+                  </svg>\77666
                 </Link>
-                <Link to="/" className="no-underline text-current inline-flex items-center justify-center border-4 px-5 py-3 text-base font-medium text-center   border-gray-500 rounded-lg hover:bg-gray-100 hover:text-slate-800 focus:ring-4 focus:ring-gray-100 text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
+                <Link to="/services" className="no-underline text-current inline-flex items-center justify-center border-4 px-5 py-3 text-base font-medium text-center   border-gray-500 rounded-lg hover:bg-gray-100 hover:text-gray-700 focus:ring-4 focus:ring-gray-100 text-gray-100 dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
                   Speak to Sales
                 </Link>
                 </div>

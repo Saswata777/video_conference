@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Privacy = () => {
   return (
@@ -24,9 +25,9 @@ const Privacy = () => {
           Let's get started.
         </p>
 
-        <button className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+        <Link to="/signup"><button className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
           Sign Up Now
-        </button>
+        </button></Link>
       </div>
     </div>
   );
