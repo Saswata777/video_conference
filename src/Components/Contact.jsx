@@ -1,10 +1,5 @@
 import React from 'react'
-import { loremIpsum } from 'lorem-ipsum';
 const Contact = () => {
-    const loremText = loremIpsum({
-        count: 46,
-        units: 'words',
-    });
   return (
     <div>
 
@@ -18,7 +13,7 @@ const Contact = () => {
               Welcome <span className="text-indigo-600">To the app</span>
             </h3>
             <p className="mt-4 leading-7 text-gray-200">
-              {loremText}
+            Lorem ipsum dolor sit amet. Sit sint consequatur cum quasi iste quo autem fuga. Id aspernatur voluptas aut officia amet ut repellat consequuntur et explicabo aliquam in internos magni. Ab delectus rerum aut cumque aspernatur sed dolor distinctio ad dolor autem quo consectetur omnis sed velit placeat. 
             </p>
 
             <div className="flex items-center mt-5">
