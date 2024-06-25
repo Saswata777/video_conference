@@ -2,6 +2,10 @@ import React from 'react'
 import "./Industries.css"
 import { IoSchool } from "react-icons/io5";
 import { GiHealing } from "react-icons/gi";
+import { RiMoneyDollarCircleFill } from "react-icons/ri";
+import { RiGovernmentFill } from "react-icons/ri";
+import { FaBoxOpen } from "react-icons/fa";
+import { IoStorefront } from "react-icons/io5";
 
 const Industries = () => {
   return (
@@ -27,23 +31,23 @@ const Industries = () => {
                 </div>
                 <div className='box'>
                     <GiHealing /> 
-                    <h2>Health</h2>
+                    <h2>Healthcare</h2>
                 </div>
                 <div className='box'>
-                    <IoSchool />
-                    <h2>Education</h2>
+                    <RiMoneyDollarCircleFill />
+                    <h2>Financial Services</h2>
                 </div>
                 <div className='box'>
-                    <GiHealing /> 
-                    <h2>Health</h2>
+                    <RiGovernmentFill/> 
+                    <h2>Government</h2>
                 </div>
                 <div className='box'>
-                    <IoSchool />
-                    <h2>Education</h2>
+                    <FaBoxOpen />
+                    <h2>Manufacturing</h2>
                 </div>
                 <div className='box'>
-                    <GiHealing /> 
-                    <h2>NGO</h2>
+                    <IoStorefront /> 
+                    <h2>Retail</h2>
                 </div>
             </div>
         </div>
