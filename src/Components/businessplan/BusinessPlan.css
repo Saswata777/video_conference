@@ -21,12 +21,8 @@
     text-align: center;
     /* margin-top: 40px; */
 }
-.title>button{
-    background-color: red;
-    font-weight: bold;
-    padding: 10px;
-    margin-top:1rem;
-}
+
+
 .cards{
     gap: 2rem;
     margin-top: 2rem;

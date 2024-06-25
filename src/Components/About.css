@@ -1,0 +1,24 @@
+.ah1{
+    font-size: 3vmax;
+    font-weight: 600;
+}
+.top{
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    justify-content: center;
+    text-align: center;
+    width: 90%;
+    margin: auto;
+}
+.team{
+    text-align: center;
+    
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    margin: auto;
+}
+.xxx{
+    background-image: linear-gradient(to top, #fddb92 0%, #d1fdff 100%);
+}
