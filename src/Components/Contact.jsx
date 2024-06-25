@@ -15,7 +15,7 @@ const Contact = () => {
               Contact
             </p>
             <h3 className="text-3xl sm:text-4xl leading-normal font-extrabold tracking-tight">
-              Welcome <span className="text-indigo-600">To the App</span>
+              Welcome <span className="text-indigo-600">To the app</span>
             </h3>
             <p className="mt-4 leading-7 text-gray-200">
               {loremText}
