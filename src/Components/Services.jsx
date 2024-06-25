@@ -1,12 +1,11 @@
 import React from 'react';
 import BusinessPlan from './businessplan/BusinessPlan';
-import Navbar from './Navbar';
+
 
 const Services = () => {
     return (
         
         <section className="py-12 bg-white">
-            <div><Navbar/></div>
             <div className="container mx-auto px-4">
                 <div className="-mx-4 flex flex-wrap">
 

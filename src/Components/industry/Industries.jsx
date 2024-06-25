@@ -17,7 +17,7 @@ const Industries = () => {
             <h1 className='ih1'>Powering Organisations acrosss <br/>
                 Industries and Geographies
             </h1>
-            <h3 className='ih3 mt-10 leading-8'>Zoom helps consolidate communications, connect people,
+            <h3 className='ih3 mt-10 leading-8'>Helps us in consolidating communications, connect people,
                 and<br/> collaborate better together in the boardroom, classroom,<br/>
                 operating room, and everywhere in between
             </h3>
