@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom'
 import { MdDarkMode } from "react-icons/md";
 import { CiLight } from "react-icons/ci";
-import { FaGoogle } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
+import { IoIosLogIn } from "react-icons/io";
 
 // Functional component representing the sign-in form
 const LogInForm = () => {
@@ -24,10 +25,10 @@ const LogInForm = () => {
     <div className={`${bgColor} font-sans min-h-screen flex flex-col items-center justify-center py-6 px-4`}>
       
       <div className="max-w-md w-full">
+        
         <a href="javascript:void(0)">
-          <img src="	" alt="logo" className="w-40 mb-8 mx-auto block" />
+          <img src="https://readymadeui.com/readymadeui.svg	" alt="logo" className="w-40 mb-8 mx-auto block" />
         </a>
-
         <div className={`p-8 rounded-2xl ${inputBgColor} shadow ${textColor}`}>
           <div className="justify-end" style={{display:"flex",justifyContent:"flex-end"}}>
             <button onClick={toggleDarkMode} className={`px-3 py-1 rounded-full ${darkMode ? 'bg-white text-gray-800' : 'bg-gray-800 text-white'}`}>
@@ -84,14 +85,15 @@ const LogInForm = () => {
             </div>
 
             <div className="!mt-8">
-              <button type="button" className={`w-full font-semibold py-3 px-4 text-sm tracking-wide rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none ${textColor}`}>
-                LOGIN
+              <button type="button" className={`w-full flex justify-center font-semibold py-3 px-4 text-md tracking-wide rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none ${textColor}`}>
+                 <IoIosLogIn className='mr-2  text-3xl'/> <span className='m-0.5'>LOGIN </span>
               </button>
             </div>
             <div className='!mt-8 '>
-              <button type="button" className={`w-full font-semibold justify-center flex py-3 px-4 text-sm tracking-wide rounded-lg text-white bg-red-500 hover:bg-red-600 focus:outline-none ${textColor}`}>
-                <FaGoogle className='mr-2 mt-1'/> <span>SIGNIN WITH GOOGLE </span>
+              <button type="button"  className={`w-full font-semibold justify-center flex py-3 px-4 text-md tracking-wide rounded-lg outline hover:outline-slate-400 text-black  ${textColor}`}>
+                <FcGoogle className='mr-2 text-3xl'/> <span className='m-0.5'>SIGNIN WITH GOOGLE </span>
               </button>
+              
             </div>
 
             <p className={`text-sm !mt-8 text-center ${textColor}`}>Don't have an account? <Link to="/signup" className={`text-blue-600 hover:underline ml-1 whitespace-nowrap font-semibold ${textColor}`}>Sign up</Link></p>

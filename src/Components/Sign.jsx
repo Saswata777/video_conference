@@ -2,7 +2,9 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom'
 import { MdDarkMode } from "react-icons/md";
 import { CiLight } from "react-icons/ci";
-import { FaGoogle } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
+import { VscAccount } from "react-icons/vsc";
+
 
 // Functional component representing the sign-in form
 const Sign = () => {
@@ -122,14 +124,14 @@ const Sign = () => {
 
 
             <div className="!mt-8">
-              <button type="button" className={`w-full font-semibold py-3 px-4 text-sm tracking-wide rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none ${textColor}`}>
-                SIGNUP
+              <button type="button" className={`w-full flex justify-center font-semibold py-3 px-4 text-md tracking-wide rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none ${textColor}`}>
+                <VscAccount className='mr-2 text-3xl'/> <span className='m-0.5'>SIGNUP </span>
               </button>
 
             </div>
             <div className='!mt-8 '>
-              <button type="button" className={`w-full font-semibold justify-center flex py-3 px-4 text-sm tracking-wide rounded-lg text-white bg-red-500 hover:bg-red-600 focus:outline-none ${textColor}`}>
-                <FaGoogle className='mr-2 mt-1'/> <span>SIGNUP WITH GOOGLE </span>
+              <button type="button" className={`w-full font-semibold justify-center flex py-3 px-4 text-md outline hover:outline-slate-400 tracking-wide rounded-lg text-black focus:outline-none ${textColor}`}>
+              <FcGoogle className='mr-2  text-3xl'/> <span className='m-0.5'>SIGNUP WITH GOOGLE </span>
               </button>
             </div>
 

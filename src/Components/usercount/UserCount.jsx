@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 const UserCount = () => {
     return (
-        <section className="h-wrapper w-100">
+        <section className="h-wrapper w-100 ">
             <div className="total ">
                 {/* Left */}
                 <div className="h-left">
@@ -72,7 +72,7 @@ const UserCount = () => {
                     
                 </div>
                 {/* Right */}
-                <div className=" h-right">
+                <div className=" h-right ">
                     <motion.div
                         initial={{ x: "7rem", opacity: 0 }}
                         animate={{ x: 0, opacity: 1 }}

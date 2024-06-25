@@ -1,13 +1,19 @@
 
+.h-wrapper{
+    background: cornflowerblue;
+}
 .total{
     display: flex;
     justify-content: space-evenly;
     gap: 1rem;
     padding-top: 1rem;
     padding: 5px;
-    background: cornflowerblue;
+    
+    width: 90%;
+    margin: auto;
 }
 .h-left{
+   
     margin-top: 3rem;
     /* gap: 3rem; */
     display: flex;
@@ -17,6 +23,7 @@
     margin-left: 0.1vmax;
 }
 .h-right{
+   
     margin-top: 3rem;
     /* gap: 3rem; */
     width: 50%;
