@@ -6,7 +6,6 @@ import Navbar from './Navbar';
 const Services = () => {
     return (
         <>
-        <div><Navbar/></div>
         <section className="py-12 bg-white">
             <div className="container mx-auto px-4">
                 <div className="-mx-4 flex flex-wrap">
