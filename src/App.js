@@ -6,6 +6,7 @@ import LogInForm from './Components/LogInForm';
 import SignUp from './Pages/SignUp';
 import Joinn from './Components/Joinn';
 import AboutPage from './Pages/AboutPage';
+import ContactPage from './Pages/ContactPage';
 function App() {
   return (
     <div className="App">
@@ -16,6 +17,7 @@ function App() {
         <Route path='/signup' element={<SignUp/>} />
         <Route path='/joinn' element={<Joinn/>} /> 
         <Route path='/about' element={<AboutPage/>} /> 
+        <Route path='/contact' element={<ContactPage/>} /> 
       </Routes>
       </BrowserRouter>
       
