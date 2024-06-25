@@ -7,6 +7,8 @@ import SignUp from './Pages/SignUp';
 import Joinn from './Components/Joinn';
 import Services from './Components/Services';
 import AboutPage from './Pages/AboutPage';
+import CreateMeeting from './Pages/createMeeting';
+import VideoCallPage from './Pages/VideoCallPage';
 function App() {
   return (
     <div className="App">
@@ -18,6 +20,8 @@ function App() {
         <Route path='/joinn' element={<Joinn/>} /> 
         <Route path='/services'element={<Services/>}/>
         <Route path='/about' element={<AboutPage/>} /> 
+        <Route path="/create-meeting" element={<CreateMeeting />} />
+        <Route path="/room/:roomID" element={< VideoCallPage/>} />
       </Routes>
       </BrowserRouter>
       
