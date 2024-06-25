@@ -3,6 +3,7 @@ import "./UserCount.css"
 import CountUp from "react-countup"
 import { motion } from "framer-motion"
 import image from "../../Images/vc.png"
+import { Link } from 'react-router-dom';
 
 const UserCount = () => {
     return (
@@ -66,7 +67,7 @@ const UserCount = () => {
                                     <span className="secondaryText">Employee</span>
                                 </div>
                         </div>
-                        <button className='btn btn-primary w-40 mb-10'>More about Us</button>
+                      <Link to="/about">  <button className='btn btn-primary w-40 mb-10'>More about Us</button></Link>
 
                     
                 </div>

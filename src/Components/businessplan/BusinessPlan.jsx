@@ -1,12 +1,16 @@
 import React from 'react'
 import "./BusinessPlan.css"
+import { Link } from 'react-router-dom'
 
 const BusinessPlan = () => {
   return (
     <div className='containeri '>
     <div className='title mt-10'>
         <h1 className=''>Select a plan that scales with your Business</h1>
-        <button className='btn but text-white'>Sign Up for Free</button>
+      {/* <Link to='/signup' className='btn btn-red text-white'> </Link> */}
+      <Link to="/signup" className="p-2 mt-1 font-bold rounded text-white  bg-red-500 hover:bg-red-600 ">
+         Sign Up for Free
+        </Link>
     </div>
     <div className='cards row'>
         <div className='card'>
@@ -44,8 +48,8 @@ const BusinessPlan = () => {
             <div className='ccontents text-white'>
                 <ul>
                     <li>Multiple co-hosts</li>
-                    <li>International dial-in</li>
-                    <li>Recording & storage</li>
+                    <li>YouTube live streaming</li>
+                    <li>Custom branding solution</li>
                 </ul>
             </div>
         </div>
