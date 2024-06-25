@@ -26,9 +26,9 @@ const LogInForm = () => {
       
       <div className="max-w-md w-full">
         
-        <a href="javascript:void(0)">
+        {/* <a href="javascript:void(0)">
           <img src="https://readymadeui.com/readymadeui.svg	" alt="logo" className="w-40 mb-8 mx-auto block" />
-        </a>
+        </a> */}
         <div className={`p-8 rounded-2xl ${inputBgColor} shadow ${textColor}`}>
           <div className="justify-end" style={{display:"flex",justifyContent:"flex-end"}}>
             <button onClick={toggleDarkMode} className={`px-3 py-1 rounded-full ${darkMode ? 'bg-white text-gray-800' : 'bg-gray-800 text-white'}`}>
@@ -78,7 +78,7 @@ const LogInForm = () => {
                 </label>
               </div>
               <div className="text-sm">
-                <a href="javascript:void(0);" className={`text-blue-600 hover:underline font-semibold ${textColor}`}>
+                <a href="/#" className={`text-blue-600 hover:underline font-semibold ${textColor}`}>
                   Forgot your password?
                 </a>
               </div>
