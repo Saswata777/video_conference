@@ -1,6 +1,5 @@
 import React from 'react';
 import BusinessPlan from './businessplan/BusinessPlan';
-import Navbar from './Navbar';
 
 
 const Services = () => {
