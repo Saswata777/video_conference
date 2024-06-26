@@ -10,6 +10,7 @@ import ContactPage from './Pages/ContactPage';
 import CreateMeeting from './Pages/createMeeting';
 import VideoCallPage from './Pages/VideoCallPage';
 import ServicePage from './Pages/ServicePage';
+import AdminDashboard from './Pages/AdminDashboard';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path='/services'element={<ServicePage/>}/>
         <Route path='/about' element={<AboutPage/>} /> 
         <Route path='/contact' element={<ContactPage/>} /> 
+        <Route path='/admin/dashboard' element={<AdminDashboard/>} />
         <Route path="/create-meeting" element={<CreateMeeting />} />
         <Route path="/room/:roomID" element={< VideoCallPage/>} />
 
