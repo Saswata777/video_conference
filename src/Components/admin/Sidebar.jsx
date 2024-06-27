@@ -1,7 +1,10 @@
-import React from 'react'
+import React,{useState} from 'react'
 
 const Sidebar = () => {
+   
+  
     return (
+        
         <div>
             <button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar" type="button" className="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-400 rounded-lg sm:hidden hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-600">
                 <span className="sr-only">Open sidebar</span>
@@ -10,7 +13,7 @@ const Sidebar = () => {
                 </svg>
             </button>
 
-            <aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
+            <aside id="logo-sidebar" className="fixed top-0 left-0 w-64  h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
                 <div class="h-full px-3 py-4 overflow-y-auto bg-gray-800">
                     <a href="https://flowbite.com/" class="flex items-center ps-2.5 mb-5">
                         <img src="https://flowbite.com/docs/images/logo.svg" class="h-6 me-3 sm:h-7" alt="Flowbite Logo" />
