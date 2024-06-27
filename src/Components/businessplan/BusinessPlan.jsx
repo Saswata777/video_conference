@@ -18,10 +18,10 @@ const BusinessPlan = () => {
             <div className='w-fit cursor-pointer ml-2 mt-3 p-2' style={{fontSize:"30px",fontWeight:"bold",color:"white",background:"blue",padding:"5px",borderRadius:"5px"}}>Free</div>
             <div className='ccontents'>
                 <ul>
-                    <li>Up to 60 minutes of meetings and webinars</li>
-                    <li>100 meeting participants & 100 webinar attendees</li>
-                    <li>Seamless video conferencing</li>
-                    <li>Secure screen sharing</li>
+                    <li className='lix'>Up to 60 minutes of meetings and webinars</li>
+                    <li className='lix'>100 meeting participants & 100 webinar attendees</li>
+                    <li className='lix'>Seamless video conferencing</li>
+                    <li className='lix'>Secure screen sharing</li>
                 </ul>
             </div>
         </div>
@@ -33,9 +33,9 @@ const BusinessPlan = () => {
             <span className='ml-2 font-bold text-lg'>billed annualy</span>
             <div className='ccontents'>
                 <ul>
-                    <li>Multiple co-hosts</li>
-                    <li>International dial-in</li>
-                    <li>Recording & storage</li>
+                    <li className='lix'>Multiple co-hosts</li>
+                    <li className='lix'>International dial-in</li>
+                    <li className='lix'>Recording & storage</li>
                 </ul>
             </div>
         </div>
@@ -47,9 +47,9 @@ const BusinessPlan = () => {
             <span className='ml-2 font-bold text-lg text-orange-500'>billed annualy</span>
             <div className='ccontents text-white'>
                 <ul>
-                    <li>Multiple co-hosts</li>
-                    <li>YouTube live streaming</li>
-                    <li>Custom branding solution</li>
+                    <li className='lix'>Multiple co-hosts</li>
+                    <li className='lix'>YouTube live streaming</li>
+                    <li className='lix'>Custom branding solution</li>
                 </ul>
             </div>
         </div>
