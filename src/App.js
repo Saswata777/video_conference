@@ -10,6 +10,7 @@ import ContactPage from './Pages/ContactPage';
 import CreateMeeting from './Pages/createMeeting';
 import VideoCallPage from './Pages/VideoCallPage';
 import ServicePage from './Pages/ServicePage';
+import User from './Components/user';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path='/contact' element={<ContactPage/>} /> 
         <Route path="/create-meeting" element={<CreateMeeting />} />
         <Route path="/room/:roomID" element={< VideoCallPage/>} />
+        <Route path="/User" element={<User />} />
 
       </Routes>
       </BrowserRouter>
