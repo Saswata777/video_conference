@@ -1,6 +1,7 @@
 import React from 'react'
 import delIcon from '../../Images/del.png'
 
+
 const users=[
   {
       "firstName": "John",
@@ -55,7 +56,7 @@ const users=[
 const User = () => {
   return (
     <div>
-        <div className="p-6 overflow-scroll px-0 lg:ml-64 ">
+        <div className="p-6  overflow-scroll px-0  ">
         <table className="mt-4 w-full min-w-max table-auto text-left">
           <thead>
             <tr>
@@ -247,11 +248,12 @@ const User = () => {
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap items-center md:justify-between justify-center">
             <div className="w-full md:w-6/12 px-4 mx-auto text-center">
-          
+             
             </div>
           </div>
         </div>
       </footer>
+     
     </div>
   )
 }
