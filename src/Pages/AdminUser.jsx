@@ -1,17 +1,20 @@
 import React from 'react'
 import Sidebar from '../Components/admin/Sidebar'
+import User from '../Components/admin/user'
 import Foooter from '../Components/Foooter'
 
-const AdminDashboard = () => {
+
+const AdminUser = () => {
   return (
     <div >
       <div className='flex'>
-      <Sidebar/>
+        <Sidebar />
+        <User />
       </div>
-      
-      <Foooter/>
+      <Foooter />
+
     </div>
   )
 }
 
-export default AdminDashboard
+export default AdminUser

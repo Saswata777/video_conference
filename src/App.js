@@ -11,7 +11,7 @@ import CreateMeeting from './Pages/createMeeting';
 import VideoCallPage from './Pages/VideoCallPage';
 import ServicePage from './Pages/ServicePage';
 import AdminDashboard from './Pages/AdminDashboard';
-import User from './Components/user';
+import AdminUser from './Pages/AdminUser';
 
 
 function App() {
@@ -29,8 +29,8 @@ function App() {
         <Route path='/admin/dashboard' element={<AdminDashboard/>} />
         <Route path="/create-meeting" element={<CreateMeeting />} />
         <Route path="/room/:roomID" element={< VideoCallPage/>} />
-        <Route path="/User" element={<User />} />
-
+        <Route path="/admin/user" element={<AdminUser />} />
+        <Route path="/admin-login" element={<LogIn/>} />
       </Routes>
       </BrowserRouter>
       
