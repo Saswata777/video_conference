@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import videoCall from '../Images/videoCall.jpeg';
+import videoCall from "../Images/videoCall.jpeg";
 import "./About.css"
 const About = () => {
   const [showMore1, setShowMore1] = useState(false);
