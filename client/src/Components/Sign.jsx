@@ -11,6 +11,81 @@ const Sign = () => {
   // State to manage dark mode
   const [darkMode, setDarkMode] = useState(false);
 
+  const [firstName, setFirstName]=useState("");
+  const [lastName, setLastName]=useState("");
+  const [username, setUsername]=useState("");
+  const [password, setPassword] = useState("");
+  const [user, setUser]= useState({
+    firstName:'',
+    lastName: '',
+    username:'',
+    password:''
+  })
+
+  const handleFirstName = (e) => {
+    setUser({ ...user, [e.target.name]: e.target.value })
+    setFirstName(e.target.value)
+    console.log(user)
+  };
+  const handleLastName = (e) => {
+    setUser({ ...user, [e.target.name]: e.target.value })
+    setLastName(e.target.value)
+    console.log(user)
+  };
+  const handleUserName = (e) => {
+    setUser({ ...user, [e.target.name]: e.target.value })
+    setUsername(e.target.value)
+    console.log(user)
+};
+
+const handlePassword = (e) => {
+  setUser({ ...user, [e.target.name]: e.target.value })
+  setPassword(e.target.value)
+  console.log(user)
+};
+
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  const { firstName, lastName, email, password } = user;
+  if (!firstName) {
+    alert("Please Enter Name");
+  }
+   else if (!lastName) {
+    alert("Please Enter your Roll");
+  }
+   else if (!email) {
+    alert("Please Enter your Email");
+  }
+  else if (!password) {
+    alert("Please Enter your Password");
+  } else {
+    try {
+      const formData = new FormData();
+      formData.append('FirstName', user.firstName);
+      formData.append('LastName', user.lastName);
+      formData.append('Email:', user.email);
+      formData.append('password', user.password);
+
+      // const res = await addUser(formData);
+      // const userData = await getUser(roll);
+
+      // if (res && res.status === 201) {
+      //   alert("Form Submitted");
+      //   setFetchedUser(userData);
+      //   setImageUrl(res.data.imageUrl);
+      //   // setQRURL(res.data.qrCode);
+      //   setQRURL(res.data.qrCode);
+      // } else {
+      //   alert("Not possible to submit");
+      //   console.error("Unexpected response:", res);
+      // }
+    } catch (error) {
+      alert("An error occurred while submitting the form");
+      console.error("Submission error:", error);
+    }
+  }
+};
   // Function to toggle dark mode
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
@@ -37,7 +112,7 @@ const Sign = () => {
             </button>
           </div>
           <h2 className={`text-center text-2xl font-bold ${textColor}`}>Sign Up</h2>
-          <form className="mt-8 space-y-4">
+          <form className="mt-8 space-y-4" onChange={handleSubmit}>
             <div className='flex gap-2 justify-between'>
               <div className='w-1/2'>
                 <label className={`text-sm mb-2 block ${textColor}`}>First Name</label>
@@ -45,6 +120,8 @@ const Sign = () => {
                   <input
                     name="firstname"
                     type="text"
+                    value={firstName}
+                    onChange={handleFirstName}
                     required
                     className={`w-full text-sm border ${inputBorderColor} px-4 py-3 rounded-md outline-blue-600 ${textColor}`}
                     placeholder="Enter user name"
@@ -61,6 +138,8 @@ const Sign = () => {
                   <input
                     name="lastname"
                     type="text"
+                    value={lastName}
+                    onChange={handleLastName}
                     required
                     className={`w-full text-sm border ${inputBorderColor} px-4 py-3 rounded-md outline-blue-600 ${textColor}`}
                     placeholder="Enter user name"
@@ -80,6 +159,8 @@ const Sign = () => {
                   name="username"
                   type="text"
                   required
+                  value={username}
+                  onChange={handleUserName}
                   className={`w-full text-sm border ${inputBorderColor} px-4 py-3 rounded-md outline-blue-600 ${textColor}`}
                   placeholder="Enter user name"
                 />
@@ -96,7 +177,9 @@ const Sign = () => {
                   <input
                     name="password"
                     type="password"
+                    onChange={handlePassword}
                     required
+                    value={password}
                     className={`w-full text-sm border ${inputBorderColor} px-4 py-3 rounded-md outline-blue-600 ${textColor}`}
                     placeholder="Enter password"
                   />
