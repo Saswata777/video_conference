@@ -21,6 +21,26 @@ const LogInForm = () => {
   const inputBgColor = darkMode ? 'bg-gray-700' : 'bg-white';
   const inputBorderColor = darkMode ? 'border-gray-600' : 'border-gray-300';
 
+  const [username, setUsername]=useState("");
+  const [password, setPassword] = useState("");
+
+  const [user, setUser]= useState({
+    username:'',
+    password:'',
+  })
+
+  const handleUsername = (e) => {
+    setUser({ ...user, [e.target.name]: e.target.value })
+    setUsername(e.target.value)
+    console.log(user)
+};
+
+const handlePassword = (e) => {
+  setUser({ ...user, [e.target.name]: e.target.value })
+  setPassword(e.target.value)
+  console.log(user)
+};
+
   return (
     <div className={`${bgColor} font-sans min-h-screen flex flex-col items-center justify-center py-6 px-4`}>
       
@@ -43,6 +63,8 @@ const LogInForm = () => {
                 <input
                   name="username"
                   type="text"
+                  value={username}
+                  onChange={handleUsername}
                   required
                   className={`w-full text-sm border ${inputBorderColor} px-4 py-3 rounded-md outline-blue-600 ${textColor}`}
                   placeholder="Enter user name"
@@ -60,6 +82,8 @@ const LogInForm = () => {
                 <input
                   name="password"
                   type="password"
+                  value={password}
+                  onChange={handlePassword}
                   required
                   className={`w-full text-sm border ${inputBorderColor} px-4 py-3 rounded-md outline-blue-600 ${textColor}`}
                   placeholder="Enter password"
