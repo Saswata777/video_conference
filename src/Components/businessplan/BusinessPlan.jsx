@@ -1,12 +1,16 @@
 import React from 'react'
 import "./BusinessPlan.css"
+import { Link } from 'react-router-dom'
 
 const BusinessPlan = () => {
   return (
     <div className='containeri '>
     <div className='title mt-10'>
         <h1 className=''>Select a plan that scales with your Business</h1>
-        <button className='btn but text-white'>Sign Up for Free</button>
+      {/* <Link to='/signup' className='btn btn-red text-white'> </Link> */}
+      <Link to="/signup" className="p-2 mt-1 font-bold rounded text-white  bg-red-500 hover:bg-red-600 ">
+         Sign Up for Free
+        </Link>
     </div>
     <div className='cards row'>
         <div className='card'>
@@ -14,10 +18,10 @@ const BusinessPlan = () => {
             <div className='w-fit cursor-pointer ml-2 mt-3 p-2' style={{fontSize:"30px",fontWeight:"bold",color:"white",background:"blue",padding:"5px",borderRadius:"5px"}}>Free</div>
             <div className='ccontents'>
                 <ul>
-                    <li>Up to 60 minutes of meetings and webinars</li>
-                    <li>100 meeting participants & 100 webinar attendees</li>
-                    <li>Seamless video conferencing</li>
-                    <li>Secure screen sharing</li>
+                    <li className='lix'>Up to 60 minutes of meetings and webinars</li>
+                    <li className='lix'>100 meeting participants & 100 webinar attendees</li>
+                    <li className='lix'>Seamless video conferencing</li>
+                    <li className='lix'>Secure screen sharing</li>
                 </ul>
             </div>
         </div>
@@ -29,9 +33,9 @@ const BusinessPlan = () => {
             <span className='ml-2 font-bold text-lg'>billed annualy</span>
             <div className='ccontents'>
                 <ul>
-                    <li>Multiple co-hosts</li>
-                    <li>International dial-in</li>
-                    <li>Recording & storage</li>
+                    <li className='lix'>Multiple co-hosts</li>
+                    <li className='lix'>International dial-in</li>
+                    <li className='lix'>Recording & storage</li>
                 </ul>
             </div>
         </div>
@@ -43,9 +47,9 @@ const BusinessPlan = () => {
             <span className='ml-2 font-bold text-lg text-orange-500'>billed annualy</span>
             <div className='ccontents text-white'>
                 <ul>
-                    <li>Multiple co-hosts</li>
-                    <li>International dial-in</li>
-                    <li>Recording & storage</li>
+                    <li className='lix'>Multiple co-hosts</li>
+                    <li className='lix'>YouTube live streaming</li>
+                    <li className='lix'>Custom branding solution</li>
                 </ul>
             </div>
         </div>

@@ -1,16 +1,16 @@
 import React from 'react'
 import Navbar from '../Components/Navbar'
 import Foooter from '../Components/Foooter'
-import Contact from '../Components/Contact'
+import LogInForm from '../Components/LogInForm'
 
-const ContactPage = () => {
+const SignUp = () => {
   return (
     <div>
       <Navbar/>
-      <Contact/>
+      <LogInForm/>
       <Foooter/>
     </div>
   )
 }
 
-export default ContactPage
+export default SignUp

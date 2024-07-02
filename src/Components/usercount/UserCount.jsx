@@ -3,10 +3,11 @@ import "./UserCount.css"
 import CountUp from "react-countup"
 import { motion } from "framer-motion"
 import image from "../../Images/vc.png"
+import { Link } from 'react-router-dom';
 
 const UserCount = () => {
     return (
-        <section className="h-wrapper w-100">
+        <section className="h-wrapper w-100 ">
             <div className="total ">
                 {/* Left */}
                 <div className="h-left">
@@ -66,12 +67,12 @@ const UserCount = () => {
                                     <span className="secondaryText">Employee</span>
                                 </div>
                         </div>
-                        <button className='btn btn-primary w-40 mb-10'>More about Us</button>
+                      <Link to="/about">  <button className='btn btn-primary w-40 mb-10'>More about Us</button></Link>
 
                     
                 </div>
                 {/* Right */}
-                <div className=" h-right">
+                <div className=" h-right ">
                     <motion.div
                         initial={{ x: "7rem", opacity: 0 }}
                         animate={{ x: 0, opacity: 1 }}

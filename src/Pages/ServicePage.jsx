@@ -1,16 +1,16 @@
 import React from 'react'
 import Navbar from '../Components/Navbar'
+import Services from '../Components/Services'
 import Foooter from '../Components/Foooter'
-import Contact from '../Components/Contact'
 
-const ContactPage = () => {
+const ServicePage = () => {
   return (
     <div>
       <Navbar/>
-      <Contact/>
+      <Services/>
       <Foooter/>
     </div>
   )
 }
 
-export default ContactPage
+export default ServicePage

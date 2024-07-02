@@ -1,5 +1,4 @@
 import React from 'react'
-
 const Contact = () => {
   return (
     <div>
@@ -11,11 +10,10 @@ const Contact = () => {
               Contact
             </p>
             <h3 className="text-3xl sm:text-4xl leading-normal font-extrabold tracking-tight">
-              Welcome <span className="text-indigo-600">To the App</span>
+              Welcome <span className="text-indigo-600">To the app</span>
             </h3>
             <p className="mt-4 leading-7 text-gray-200">
-              Our endeavour to enhance the communication between doctors and
-              patients.
+            Lorem ipsum dolor sit amet. Sit sint consequatur cum quasi iste quo autem fuga. Id aspernatur voluptas aut officia amet ut repellat consequuntur et explicabo aliquam in internos magni.  
             </p>
 
             <div className="flex items-center mt-5">
