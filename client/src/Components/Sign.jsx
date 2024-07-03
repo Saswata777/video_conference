@@ -5,6 +5,7 @@ import { CiLight } from "react-icons/ci";
 import { FcGoogle } from "react-icons/fc";
 import { VscAccount } from "react-icons/vsc";
 import { addUser } from '../service/api';
+import Cookies from 'js-cookie'; 
 
 
 // Functional component representing the sign-in form
@@ -33,6 +34,7 @@ const handleSubmit = async (e) => {
     try {
       const res = await addUser(user);
       if (res && res.status === 201) {
+        Cookies.set('token', res.data.token, { expires: 7 }); // Store token in cookies for 7 days
         alert("Form Submitted");
       } else {
         alert("Not possible to submit");
