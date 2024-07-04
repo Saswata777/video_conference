@@ -64,6 +64,24 @@ router.post('/signup', async (req, res) => {
     }
   });
 
+  //Logout route
+router.post('/logout', (req, res) => {
+    res.clearCookie('token', { httpOnly: true, secure: true });
+    res.status(200).json({ message: 'Logout successful' });
+  });
+
+
+
+//   logic for "Is user is loggedin or not" in routes.js
+  router.get('/profile', authenticateToken, async (req, res) => {
+    try {
+      const user = await User.findById(req.user.id);
+      res.json(user);
+    } catch (error) {
+      res.status(500).json('Internal Server Error');
+    }
+  });
+
   //delete user
 //   router.delete('/:id',
 //   async(req,res)=>{
