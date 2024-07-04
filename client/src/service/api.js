@@ -20,7 +20,7 @@ export const loginUser = async (data) => {
     return error.response;  // Return the error response if the request fails
   }
 }
-
+ 
 // export const getUser = async (roll) => {
 //   try {
 //     const response = await fetch(`${URL}/user/${roll}`, {

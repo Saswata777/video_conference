@@ -35,7 +35,7 @@ const Sidebar = () => {
     ]
     return (
         <div >
-            <div className={`${open?"w-64":"w-16"} relative duration-150 h-screen bg-gray-800 text-gray-200 flex flex-col`}>
+            <div className={`${open?"w-64":"w-16"} relative duration-150 h-screen bg-gray-800 text-gray-200 flex flex-col overflow-y-hidden-hidden`}>
                 <div className='flex items-center  gap-3 rtl:space-x-reverse p-2 pt-3 pb-3'>
                 <a href="/" className={`${!open && 'hidden'} flex  space-x-4 ml-2 items-center`} >
                     <img src="https://flowbite.com/docs/images/logo.svg" className="h-8" alt="Flowbite Logo" />

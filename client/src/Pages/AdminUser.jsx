@@ -1,7 +1,7 @@
 import React from 'react'
 import Sidebar from '../Components/admin/Sidebar'
-import User from '../Components/admin/user'
 import Foooter from '../Components/Foooter'
+import User from '../Components/admin/user'
 
 
 const AdminUser = () => {
@@ -9,7 +9,7 @@ const AdminUser = () => {
     <div >
       <div className='flex'>
         <Sidebar />
-        <User />
+        <User/>
       </div>
       <Foooter />
 

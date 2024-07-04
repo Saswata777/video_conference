@@ -1,62 +1,113 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import delIcon from '../../Images/del.png'
+import Swal from 'sweetalert2';
 
-
-const users=[
-  {
-      "firstName": "John",
-      "lastName": "Doe",
-      "emailId": "john.doe@example.com",
-      "status": "active",
-      "satusClass":"bg-green-500/20 text-green-600",
-      "registrationDate": "2023-01-15"
-  },
-  {
-      "firstName": "Jane",
-      "lastName": "Smith",
-      "emailId": "jane.smith@example.com",
-      "status": "inactive",
-      "satusClass":"bg-red-500/20 text-red-700",
-      "registrationDate": "2022-11-25"
-  },
-  {
-      "firstName": "Alice",
-      "lastName": "Johnson",
-      "emailId": "alice.johnson@example.com",
-      "status": "active",
-      "satusClass":"bg-green-500/20 text-green-600",
-      "registrationDate": "2023-03-30"
-  },
-  {
-      "firstName": "Bob",
-      "lastName": "Brown",
-      "emailId": "bob.brown@example.com",
-      "status": "pending",
-      "satusClass":"bg-yellow-500/20 text-yellow-600",
-      "registrationDate": "2022-12-10"
-  },
-  {
-      "firstName": "Charlie",
-      "lastName": "Davis",
-      "emailId": "charlie.davis@example.com",
-      "status": "active",
-      "satusClass":"bg-green-500/20 text-green-600",
-      "registrationDate": "2023-04-12"
-  },
-  {
-      "firstName": "Emily",
-      "lastName": "Wilson",
-      "emailId": "emily.wilson@example.com",
-      "status": "inactive",
-      "satusClass":"bg-red-500/20 text-red-700",
-      "registrationDate": "2023-02-20"
-  }
-]
+// const users=[
+//   {
+//       "firstName": "Johnny",
+//       "lastName": "Doe",
+//       "emailId": "john.doe@example.com",
+//       "status": "active",
+//       "satusClass":"bg-green-500/20 text-green-600",
+//       "registrationDate": "2023-01-15"
+//   },
+//   {
+//       "firstName": "Jane",
+//       "lastName": "Smith",
+//       "emailId": "jane.smith@example.com",
+//       "status": "inactive",
+//       "satusClass":"bg-red-500/20 text-red-700",
+//       "registrationDate": "2022-11-25"
+//   },
+//   {
+//       "firstName": "Alice",
+//       "lastName": "Johnson",
+//       "emailId": "alice.johnson@example.com",
+//       "status": "active",
+//       "satusClass":"bg-green-500/20 text-green-600",
+//       "registrationDate": "2023-03-30"
+//   },
+//   {
+//       "firstName": "Bob",
+//       "lastName": "Brown",
+//       "emailId": "bob.brown@example.com",
+//       "status": "pending",
+//       "satusClass":"bg-yellow-500/20 text-yellow-600",
+//       "registrationDate": "2022-12-10"
+//   },
+//   {
+//       "firstName": "Charlie",
+//       "lastName": "Davis",
+//       "emailId": "charlie.davis@example.com",
+//       "status": "active",
+//       "satusClass":"bg-green-500/20 text-green-600",
+//       "registrationDate": "2023-04-12"
+//   },
+//   {
+//       "firstName": "Emily",
+//       "lastName": "Wilson",
+//       "emailId": "emily.wilson@example.com",
+//       "status": "inactive",
+//       "satusClass":"bg-red-500/20 text-red-700",
+//       "registrationDate": "2023-02-20"
+//   }
+// ]
 
 const User = () => {
+
+
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = () => {
+    axios.get('http://localhost:8000/getUsers')
+      .then(response => {
+        setData(response.data);
+      })
+      .catch(error => {
+        console.error('There was an error fetching the data!', error);
+      });
+  };
+
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: 'Are you sure you want to remove this user?',
+      text: 'You won\'t be able to revert this!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, cancel!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios.delete(`http://localhost:8000/getUsers/${id}`)
+          .then(response => {
+            Swal.fire(
+              'Deleted!',
+              'Your data has been deleted.',
+              'success'
+            );
+            fetchData(); // Refresh the data
+          })
+          .catch(error => {
+            console.error('There was an error deleting the data!', error);
+          });
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Cancelled',
+          'Your data is safe :)',
+          'error'
+        );
+      }
+    });
+  };
+
   return (
     <div>
-        <div className="p-6  overflow-scroll px-0  ">
+        <div className="p-6 overflow-scroll px-0 mx-auto overflow-x-scroll">
         <table className="mt-4 w-full min-w-max table-auto text-left">
           <thead>
             <tr>
@@ -168,14 +219,14 @@ const User = () => {
             </tr>
           </thead>
           <tbody>
-          { users.map(user => {
+          { data.map(e => {
             return (
               <tr>
               <td className="p-4 border-b border-blue-gray-50">
                 <div className="flex items-center gap-3">
                   <div className="flex flex-col">
                     <p className="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-normal">
-                      {user.firstName}
+                      {e.firstName}
                     </p>
                   </div>
                 </div>
@@ -184,7 +235,7 @@ const User = () => {
                 <div className="flex items-center gap-3">
                   <div className="flex flex-col">
                     <p className="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-normal">
-                      {user.lastName}
+                      {e.lastName}
                     </p>
                   </div>
                 </div>
@@ -192,23 +243,23 @@ const User = () => {
               <td className="p-4 border-b border-blue-gray-50">
                 <div className="flex flex-col">
                   <p className="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-normal">
-                    {user.emailId}
+                    {e.username}
                   </p>
                 </div>
               </td>
               <td className="p-4 border-b border-blue-gray-50">
                 <div className="w-max">
                   <div
-                    className={`relative grid items-center font-sans font-bold uppercase whitespace-nowrap select-none ${user.satusClass} bg-green-500/20 text-green-600 py-1 px-2 text-xs rounded-md`}
+                    className={`relative grid items-center font-sans font-bold uppercase whitespace-nowrap select-none ${e.satusClass} bg-green-500/20 text-green-600 py-1 px-2 text-xs rounded-md`}
                     style={{ opacity: 1 }}
                   >
-                    <span className="">{user.status}</span>
+                    <span className="">{e.status}</span>
                   </div>
                 </div>
               </td>
               <td className="p-4 border-b border-blue-gray-50">
                 <p className="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-normal">
-                  {user.registrationDate}
+                  {e.createdAt}
                 </p>
               </td>
               <td className="p-4 border-b border-blue-gray-50">
@@ -233,7 +284,8 @@ const User = () => {
                   type="button"
                 >
                   <span className="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
-                  <img src={delIcon} alt="" />
+                  <img src={delIcon} alt="" onClick={()=>{handleDelete(e._id)}} />
+                  
                   </span>
                 </button>
               </td>
@@ -248,12 +300,11 @@ const User = () => {
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap items-center md:justify-between justify-center">
             <div className="w-full md:w-6/12 px-4 mx-auto text-center">
-             
+          
             </div>
           </div>
         </div>
       </footer>
-     
     </div>
   )
 }
