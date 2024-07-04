@@ -12,6 +12,7 @@ import VideoCallPage from './Pages/VideoCallPage';
 import ServicePage from './Pages/ServicePage';
 import AdminDashboard from './Pages/AdminDashboard';
 import AdminUser from './Pages/AdminUser';
+import Logout from './Components/Logout';
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
         <Route path="/room/:roomID" element={< VideoCallPage/>} />
         <Route path="/admin/user" element={<AdminUser />} />
         <Route path="/admin-login" element={<LogIn/>} />
+        <Route path='/logout' element={<Logout />} />
       </Routes>
       </BrowserRouter>
       

@@ -12,9 +12,6 @@ app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use('/', router);
-// app.get('/',(req, res)=>{
-//     res.send("This is Home page");
-// })
 Connection();
 const PORT = 8000;
 app.listen(PORT,()=>{

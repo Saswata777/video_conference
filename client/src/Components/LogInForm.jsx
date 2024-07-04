@@ -6,10 +6,12 @@ import { FcGoogle } from "react-icons/fc";
 import { IoIosLogIn } from "react-icons/io";
 import Cookies from 'js-cookie'; 
 import { loginUser } from '../service/api';
+import { useNavigate } from 'react-router-dom';
 // Functional component representing the sign-in form
 const LogInForm = () => {
   // State to manage dark mode
   const [darkMode, setDarkMode] = useState(false);
+  const navigate = useNavigate();
 
   // Function to toggle dark mode
   const toggleDarkMode = () => {
@@ -44,7 +46,8 @@ const handleSubmit = async (e) => {
       const res = await loginUser(user);
       if (res && res.status === 200) {
         Cookies.set('token', res.data.token, { expires: 1 }); // Store token in cookies for 7 days
-        alert("User logged in successfylly");
+        // alert("User logged in successfylly");
+        navigate("/");
       } else {
         alert("invalid username or password");
         console.error("Unexpected response:", res.data);
