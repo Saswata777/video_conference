@@ -69,12 +69,12 @@ router.post('/signup', async (req, res) => {
     try {
       const user = await User.findOne({ username: req.body.username });
       if (!user) {
-        return res.status(400).json('Invalid username or password');
+        return res.status(400).json('Invalid username');
       }
   
       const isMatch = await bcrypt.compare(req.body.password, user.password);
       if (!isMatch) {
-        return res.status(400).json('Invalid username or password');
+        return res.status(400).json('Invalid password');
       }
   
       const token = jwt.sign({ id: user._id }, JWT_SECRET, { expiresIn: '1h' });
