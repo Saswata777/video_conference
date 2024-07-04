@@ -14,10 +14,6 @@ app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use('/', router);
-// app.get('/',(req, res)=>{
-//     res.send("This is Home page");
-// })
-
 // API endpoint to get data
 app.get('/getUsers', async (req, res) => {
     try {
@@ -37,8 +33,6 @@ app.delete('/getUsers/:id', async (req, res) => {
       res.status(400).send('Error: ' + err);
     }
   });
-
-
 Connection();
 const PORT = 8000;
 app.listen(PORT,()=>{
