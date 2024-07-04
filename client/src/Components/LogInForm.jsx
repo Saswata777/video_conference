@@ -4,11 +4,14 @@ import { MdDarkMode } from "react-icons/md";
 import { CiLight } from "react-icons/ci";
 import { FcGoogle } from "react-icons/fc";
 import { IoIosLogIn } from "react-icons/io";
-
+import Cookies from 'js-cookie'; 
+import { loginUser } from '../service/api';
+import { useNavigate } from 'react-router-dom';
 // Functional component representing the sign-in form
 const LogInForm = () => {
   // State to manage dark mode
   const [darkMode, setDarkMode] = useState(false);
+  const navigate = useNavigate();
 
   // Function to toggle dark mode
   const toggleDarkMode = () => {
@@ -21,25 +24,42 @@ const LogInForm = () => {
   const inputBgColor = darkMode ? 'bg-gray-700' : 'bg-white';
   const inputBorderColor = darkMode ? 'border-gray-600' : 'border-gray-300';
 
-  const [username, setUsername]=useState("");
-  const [password, setPassword] = useState("");
+
 
   const [user, setUser]= useState({
     username:'',
     password:'',
   })
 
-  const handleUsername = (e) => {
+  const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value })
-    setUsername(e.target.value)
-    console.log(user)
+
 };
 
-const handlePassword = (e) => {
-  setUser({ ...user, [e.target.name]: e.target.value })
-  setPassword(e.target.value)
-  console.log(user)
+const handleSubmit = async (e) => {
+  const { username, password } = user;
+  if (!username || !password) {
+    alert("Please fill all the fields");
+  }else{
+    e.preventDefault();
+    try {
+      const res = await loginUser(user);
+      if (res && res.status === 200) {
+        Cookies.set('token', res.data.token, { expires: 1 }); // Store token in cookies for 7 days
+        // alert("User logged in successfylly");
+        navigate("/");
+      } else {
+        alert("invalid username or password");
+        console.error("Unexpected response:", res.data);
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  }
+ 
 };
+
+
 
   return (
     <div className={`${bgColor} font-sans min-h-screen flex flex-col items-center justify-center py-6 px-4`}>
@@ -56,15 +76,15 @@ const handlePassword = (e) => {
             </button>
           </div>
           <h2 className={`text-center text-2xl font-bold ${textColor}`}>Login</h2>
-          <form className="mt-8 space-y-4">
+          <form className="mt-8 space-y-4" onSubmit={handleSubmit}>
             <div>
               <label className={`text-sm mb-2 block ${textColor}`}>User name</label>
               <div className="relative flex items-center">
                 <input
                   name="username"
                   type="text"
-                  value={username}
-                  onChange={handleUsername}
+                  value={user.username}
+                  onChange={handleChange}
                   required
                   className={`w-full text-sm border ${inputBorderColor} px-4 py-3 rounded-md outline-blue-600 ${textColor}`}
                   placeholder="Enter user name"
@@ -82,8 +102,8 @@ const handlePassword = (e) => {
                 <input
                   name="password"
                   type="password"
-                  value={password}
-                  onChange={handlePassword}
+                  value={user.password}
+                  onChange={handleChange}
                   required
                   className={`w-full text-sm border ${inputBorderColor} px-4 py-3 rounded-md outline-blue-600 ${textColor}`}
                   placeholder="Enter password"
@@ -109,12 +129,12 @@ const handlePassword = (e) => {
             </div>
 
             <div className="!mt-8">
-              <button type="button" className={`w-full flex justify-center font-semibold py-3 px-4 text-md tracking-wide rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none ${textColor}`}>
+              <button type="submit"  className={`w-full flex justify-center font-semibold py-3 px-4 text-md tracking-wide rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none ${textColor}`}>
                  <IoIosLogIn className='mr-2  text-3xl'/> <span className='m-0.5'>LOGIN </span>
               </button>
             </div>
             <div className='!mt-8 '>
-              <button type="button"  className={`w-full font-semibold justify-center flex py-3 px-4 text-md tracking-wide rounded-lg outline hover:outline-slate-400 text-black  ${textColor}`}>
+              <button type="submit"  className={`w-full font-semibold justify-center flex py-3 px-4 text-md tracking-wide rounded-lg outline hover:outline-slate-400 text-black  ${textColor}`}>
                 <FcGoogle className='mr-2 text-3xl'/> <span className='m-0.5'>SIGNIN WITH GOOGLE </span>
               </button>
               

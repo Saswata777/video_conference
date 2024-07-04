@@ -4,88 +4,53 @@ import { MdDarkMode } from "react-icons/md";
 import { CiLight } from "react-icons/ci";
 import { FcGoogle } from "react-icons/fc";
 import { VscAccount } from "react-icons/vsc";
+import { addUser } from '../service/api';
+import Cookies from 'js-cookie'; 
+import { useNavigate } from 'react-router-dom';
 
 
 // Functional component representing the sign-in form
 const Sign = () => {
   // State to manage dark mode
   const [darkMode, setDarkMode] = useState(false);
+  const navigate = useNavigate();
 
-  const [firstName, setFirstName]=useState("");
-  const [lastName, setLastName]=useState("");
-  const [username, setUsername]=useState("");
-  const [password, setPassword] = useState("");
-  const [user, setUser]= useState({
-    firstName:'',
-    lastName: '',
-    username:'',
-    password:''
-  })
+const [user, setUser] = useState({
+  firstName: '',
+  lastName: '',
+  username: '',
+  password: ''
+});
 
-  const handleFirstName = (e) => {
-    setUser({ ...user, [e.target.name]: e.target.value })
-    setFirstName(e.target.value)
-    console.log(user)
-  };
-  const handleLastName = (e) => {
-    setUser({ ...user, [e.target.name]: e.target.value })
-    setLastName(e.target.value)
-    console.log(user)
-  };
-  const handleUserName = (e) => {
-    setUser({ ...user, [e.target.name]: e.target.value })
-    setUsername(e.target.value)
-    console.log(user)
+const handleChange = (e) => {
+  setUser({ ...user, [e.target.name]: e.target.value });
 };
-
-const handlePassword = (e) => {
-  setUser({ ...user, [e.target.name]: e.target.value })
-  setPassword(e.target.value)
-  console.log(user)
-};
-
 
 const handleSubmit = async (e) => {
   e.preventDefault();
-  const { firstName, lastName, email, password } = user;
-  if (!firstName) {
-    alert("Please Enter Name");
-  }
-   else if (!lastName) {
-    alert("Please Enter your Roll");
-  }
-   else if (!email) {
-    alert("Please Enter your Email");
-  }
-  else if (!password) {
-    alert("Please Enter your Password");
+  const { firstName, lastName, username, password } = user;
+  if (!firstName || !lastName || !username || !password) {
+    alert("Please fill all the fields");
   } else {
     try {
-      const formData = new FormData();
-      formData.append('FirstName', user.firstName);
-      formData.append('LastName', user.lastName);
-      formData.append('Email:', user.email);
-      formData.append('password', user.password);
-
-      // const res = await addUser(formData);
-      // const userData = await getUser(roll);
-
-      // if (res && res.status === 201) {
-      //   alert("Form Submitted");
-      //   setFetchedUser(userData);
-      //   setImageUrl(res.data.imageUrl);
-      //   // setQRURL(res.data.qrCode);
-      //   setQRURL(res.data.qrCode);
-      // } else {
-      //   alert("Not possible to submit");
-      //   console.error("Unexpected response:", res);
-      // }
+      const res = await addUser(user);
+      if (res && res.status === 201) {
+        Cookies.set('token', res.data.token, { expires: 7 }); // Store token in cookies for 7 days
+        alert("Congratulation You Successfully Registerd to MeetUp");
+        navigate("/");
+      } else {
+        alert("Not possible to submit");
+        console.error("Unexpected response:", res);
+      }
     } catch (error) {
       alert("An error occurred while submitting the form");
       console.error("Submission error:", error);
     }
   }
 };
+
+
+
   // Function to toggle dark mode
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
@@ -112,16 +77,16 @@ const handleSubmit = async (e) => {
             </button>
           </div>
           <h2 className={`text-center text-2xl font-bold ${textColor}`}>Sign Up</h2>
-          <form className="mt-8 space-y-4" onChange={handleSubmit}>
+          <form className="mt-8 space-y-4" onSubmit={handleSubmit}>
             <div className='flex gap-2 justify-between'>
               <div className='w-1/2'>
                 <label className={`text-sm mb-2 block ${textColor}`}>First Name</label>
                 <div className="relative flex items-center">
                   <input
-                    name="firstname"
+                    name="firstName"
                     type="text"
-                    value={firstName}
-                    onChange={handleFirstName}
+                    value={user.firstName}
+                    onChange={handleChange}
                     required
                     className={`w-full text-sm border ${inputBorderColor} px-4 py-3 rounded-md outline-blue-600 ${textColor}`}
                     placeholder="Enter user name"
@@ -136,10 +101,10 @@ const handleSubmit = async (e) => {
                 <label className={`text-sm mb-2 block ${textColor}`}>Last name</label>
                 <div className="relative flex items-center">
                   <input
-                    name="lastname"
+                    name="lastName"
                     type="text"
-                    value={lastName}
-                    onChange={handleLastName}
+                    value={user.lastName}
+                    onChange={handleChange}
                     required
                     className={`w-full text-sm border ${inputBorderColor} px-4 py-3 rounded-md outline-blue-600 ${textColor}`}
                     placeholder="Enter user name"
@@ -159,8 +124,8 @@ const handleSubmit = async (e) => {
                   name="username"
                   type="text"
                   required
-                  value={username}
-                  onChange={handleUserName}
+                  value={user.username}
+                  onChange={handleChange}
                   className={`w-full text-sm border ${inputBorderColor} px-4 py-3 rounded-md outline-blue-600 ${textColor}`}
                   placeholder="Enter user name"
                 />
@@ -177,9 +142,9 @@ const handleSubmit = async (e) => {
                   <input
                     name="password"
                     type="password"
-                    onChange={handlePassword}
+                    value={user.password}
+                    onChange={handleChange}
                     required
-                    value={password}
                     className={`w-full text-sm border ${inputBorderColor} px-4 py-3 rounded-md outline-blue-600 ${textColor}`}
                     placeholder="Enter password"
                   />
@@ -207,7 +172,7 @@ const handleSubmit = async (e) => {
 
 
             <div className="!mt-8">
-              <button type="button" className={`w-full flex justify-center font-semibold py-3 px-4 text-md tracking-wide rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none ${textColor}`}>
+              <button type="submit" className={`w-full flex justify-center font-semibold py-3 px-4 text-md tracking-wide rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none ${textColor}`}>
                 <VscAccount className='mr-2 text-3xl'/> <span className='m-0.5'>SIGNUP </span>
               </button>
 

@@ -1,24 +1,33 @@
 import mongoose from "mongoose";
 
 const userSchema = mongoose.Schema({
-  firstName: {
-    type: String,
-    default: null,
+  firstName:{
+    type:String,
+    required:true
   },
-  lasstName: {
-    type: String,
-    default: null,
+  lastName:{
+    type:String,
+    required:true
   },
-  email: {
-    type: String,
-    unique: true,
+  username:{
+    type:String,
+    required:true
   },
-  password: {
-    type: String,
+  password:{
+    type:String,
+    required:true
   },
-  token: {
-    type: String,
-    default: null,
+  isAdmin:{
+    type:Boolean,
+    default:false
+  },
+  status:{
+    type:String,
+    default:"Inactive"
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
   },
 });
 
