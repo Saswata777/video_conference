@@ -113,6 +113,26 @@ const User = () => {
             <tr>
               <th className="cursor-pointer border-y border-blue-gray-100 bg-blue-gray-50/50 p-4 transition-colors hover:bg-blue-gray-50">
                 <p className="antialiased font-sans text-sm text-blue-gray-900 flex items-center justify-between gap-2 font-normal leading-none opacity-70">
+                  Sl No.{" "}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                    className="h-4 w-4"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9"
+                    ></path>
+                  </svg>
+                </p>
+              </th>
+              <th className="cursor-pointer border-y border-blue-gray-100 bg-blue-gray-50/50 p-4 transition-colors hover:bg-blue-gray-50">
+                <p className="antialiased font-sans text-sm text-blue-gray-900 flex items-center justify-between gap-2 font-normal leading-none opacity-70">
                   First Name{" "}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -153,7 +173,7 @@ const User = () => {
               </th>
               <th className="cursor-pointer border-y border-blue-gray-100 bg-blue-gray-50/50 p-4 transition-colors hover:bg-blue-gray-50">
                 <p className="antialiased font-sans text-sm text-blue-gray-900 flex items-center justify-between gap-2 font-normal leading-none opacity-70">
-                  Email Id{" "}
+                  Username{" "}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -219,9 +239,18 @@ const User = () => {
             </tr>
           </thead>
           <tbody>
-          { data.map(e => {
+          { data.map((e,index) => {
             return (
               <tr>
+              <td className="p-4 border-b border-blue-gray-50">
+                <div className="flex items-center gap-3">
+                  <div className="flex flex-col">
+                    <p className="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-normal">
+                      {index+1}
+                    </p>
+                  </div>
+                </div>
+              </td>
               <td className="p-4 border-b border-blue-gray-50">
                 <div className="flex items-center gap-3">
                   <div className="flex flex-col">
