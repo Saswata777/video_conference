@@ -2,37 +2,11 @@ import express from 'express';
 import {User} from '../schema/user.js'
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
+import authenticateToken from '../middleware/authenticateToken.js';
 
 
 const router = express.Router();
-const JWT_SECRET = 'your_jwt_secret'; // Use a strong secret in production
-
-// router.post('/add', async (req, res) => {
-//     try {
-//         if (await User.findOne({ username: req.body.username })) {
-//             return res.status(400).json('This User is already Resigistered');
-//         } else {
-//             const user = new User();
-//                 user.firstName = req.body.firstName,
-//                 user.lastName = req.body.lastName,
-//                 user.username = req.body.username,
-//                 user.password = req.body.password
-            
-            
-//             await user.save(); // Save the user to the database
-
-//             return res.status(201).json({
-//                 message: 'Data Successfully Inserted',
-//                 user
-//             });
-//         }
-//     } catch (error) {
-//         console.error('Error inserting data:', error);
-//         return res.status(500).json('Internal Server Error');
-//     }
-//   });
-
-//   export default router;
+const JWT_SECRET = 'your_jwt_secret'; 
 
 // Signup route
 router.post('/signup', async (req, res) => {
@@ -86,6 +60,22 @@ router.post('/signup', async (req, res) => {
       });
     } catch (error) {
       console.error('Login error:', error);
+      res.status(500).json('Internal Server Error');
+    }
+  });
+
+//   logout route
+  router.post('/logout', (req, res) => {
+    res.clearCookie('token', { httpOnly: true, secure: true });
+    res.status(200).json({ message: 'Logout successful' });
+  });
+
+//   logic for "Is user is loggedin or not" in routes.js
+  router.get('/profile', authenticateToken, async (req, res) => {
+    try {
+      const user = await User.findById(req.user.id);
+      res.json(user);
+    } catch (error) {
       res.status(500).json('Internal Server Error');
     }
   });

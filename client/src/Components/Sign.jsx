@@ -6,13 +6,14 @@ import { FcGoogle } from "react-icons/fc";
 import { VscAccount } from "react-icons/vsc";
 import { addUser } from '../service/api';
 import Cookies from 'js-cookie'; 
+import { useNavigate } from 'react-router-dom';
 
 
 // Functional component representing the sign-in form
 const Sign = () => {
   // State to manage dark mode
   const [darkMode, setDarkMode] = useState(false);
-
+  const navigate = useNavigate();
 
 const [user, setUser] = useState({
   firstName: '',
@@ -35,7 +36,8 @@ const handleSubmit = async (e) => {
       const res = await addUser(user);
       if (res && res.status === 201) {
         Cookies.set('token', res.data.token, { expires: 7 }); // Store token in cookies for 7 days
-        alert("Form Submitted");
+        alert("Congratulation You Successfully Registerd to MeetUp");
+        navigate("/");
       } else {
         alert("Not possible to submit");
         console.error("Unexpected response:", res);
