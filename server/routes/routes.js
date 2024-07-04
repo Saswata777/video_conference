@@ -64,20 +64,24 @@ router.post('/signup', async (req, res) => {
     }
   });
 
-//   logout route
-  router.post('/logout', (req, res) => {
-    res.clearCookie('token', { httpOnly: true, secure: true });
-    res.status(200).json({ message: 'Logout successful' });
-  });
+  //delete user
+//   router.delete('/:id',
+//   async(req,res)=>{
+//     const id=req.params.id;
+//     const{currentUserId,currentUserAdminStatus}=req.body
 
-//   logic for "Is user is loggedin or not" in routes.js
-  router.get('/profile', authenticateToken, async (req, res) => {
-    try {
-      const user = await User.findById(req.user.id);
-      res.json(user);
-    } catch (error) {
-      res.status(500).json('Internal Server Error');
-    }
-  });
+//     if(currentUserId===id || currentUserAdminStatus){
+//         try {
+//             await UserModel.findByIdAndDelete(id);
+//             res.status(200).json("User deleted successfully")
+//         } catch (error) {
+//             res.status(500).json(error);
+//         }
+//     }else{
+//         res.status(403).json("Access denied!You can delete only your own profile")
+//     }
+// });
+
+
 
   export default router;
