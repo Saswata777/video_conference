@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import eye from "../../Images/eye.png"
 import meet from "../../Images/meet.webp"
 import users from "../../Images/users.png"
@@ -9,6 +10,23 @@ import { Sector} from 'recharts';
 import { BarChart, Bar, Rectangle, XAxis, YAxis, CartesianGrid, Legend } from 'recharts';
 
 const Dashboard = () => {
+
+    const [userCount, setUserCount] = useState(0);
+
+    useEffect(() => {
+      fetchUserCount();
+    }, []);
+  
+    const fetchUserCount = () => {
+      axios.get('http://localhost:8000/countUsers')
+        .then(response => {
+          setUserCount(response.data.count);
+        })
+        .catch(error => {
+          console.error('There was an error fetching the user count!', error);
+        });
+    };
+
     const [state,setState]=useState({activeIndex:0})
   
     
@@ -21,7 +39,7 @@ const Dashboard = () => {
         {
             title: "Total Users",
             logo: users,
-            desc: "1.29K"
+            desc: userCount.toLocaleString()
         },
         {
             title: "Total Views",
@@ -58,43 +76,43 @@ const Dashboard = () => {
 
     const datab = [
         {
-            name: 'Monday',
+            name: 'Mon',
             views: 400,
             newUsers: 240,
             
         },
         {
-            name: 'Tuesday',
+            name: 'Tue',
             views: 300,
             newUsers: 139,
             // amt: 221,
         },
         {
-            name: 'wednesday',
+            name: 'Wed',
             views: 200,
             newUsers: 98,
             // amt: 229,
         },
         {
-            name: 'Thursday',
+            name: 'Thur',
             views: 278,
             newUsers: 39,
             // amt: 200,
         },
         {
-            name: 'Friday',
+            name: 'Fri',
             views: 189,
             newUsers: 48,
             // amt: 2181,
         },
         {
-            name: 'Saturday',
-            views: 23,
-            newUsers: 3,
+            name: 'Sat',
+            views: 230,
+            newUsers: 30,
             // amt: 2500,
         },
         {
-            name: 'Sunday',
+            name: 'Sun',
             views: 349,
             newUsers: 43,
             // amt: 2100,
