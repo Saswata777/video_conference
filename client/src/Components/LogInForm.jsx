@@ -7,6 +7,7 @@ import { IoIosLogIn } from "react-icons/io";
 import Cookies from 'js-cookie'; 
 import { loginUser } from '../service/api';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 // Functional component representing the sign-in form
 const LogInForm = () => {
   // State to manage dark mode
@@ -47,9 +48,24 @@ const handleSubmit = async (e) => {
       if (res && res.status === 200) {
         Cookies.set('token', res.data.token, { expires: 1 }); // Store token in cookies for 7 days
         // alert("User logged in successfylly");
-        navigate("/");
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "login successful",
+          showConfirmButton: false,
+          timer: 1500
+        });
+        setTimeout(() => {
+          navigate("/");
+        }, 1500);
       } else {
-        alert("invalid username or password");
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Invalid username or password",
+          // footer: '<a href="#">Why do I have this issue?</a>'
+        });
+        // alert("invalid username or password");
         console.error("Unexpected response:", res.data);
       }
     } catch (err) {

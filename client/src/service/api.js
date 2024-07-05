@@ -30,7 +30,15 @@ export const logoutUser = async () => {
     }
   }
 
-
+  export const Messages = async (data) => {
+    try {
+      const response = await axios.post(`${URL}/message`, data);
+      return response;
+    } catch (error) {
+      console.log("While connecting the API", error);
+      return error.response;  // Return the error response if the request fails
+    }
+  }
  
 // export const getUser = async (roll) => {
 //   try {

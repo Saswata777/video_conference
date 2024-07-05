@@ -1,5 +1,81 @@
-import React from 'react'
+import React, {useState} from 'react'
+import { Messages } from '../service/api.js'
+import Swal from 'sweetalert2'
+import { Bounce, ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import 'animate.css';
+
 const Contact = () => {
+  const [userMessage, setUserMessage]= useState({
+    name:'',
+    email:'',
+    message:''
+  })
+
+  const notify = ()=>{
+    toast.success(' Message Send!', {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+      });
+  }
+
+
+  const handleMessage = (e)=>{
+    setUserMessage({ ...userMessage, [e.target.name]: e.target.value });
+  }
+  const handleSubmit = async(e)=>{
+    e.preventDefault();
+  const { name, email, message } = userMessage;
+  if (!name || !email || !message) {
+    Swal.fire({
+      title: "Please fill all the fields",
+      showClass: {
+        popup: `
+          animate__animated
+          animate__fadeInUp
+          animate__faster
+        `
+      },
+      hideClass: {
+        popup: `
+          animate__animated
+          animate__fadeOutDown
+          animate__faster
+        `
+      }
+    });
+  } else {
+    try {
+      const res = await Messages(userMessage);
+      if (res && res.status === 201) {
+        notify();
+        setTimeout(() =>{
+          window.location.reload()
+      }, 5500)
+      }
+       else {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Unable to submit",
+        });
+        setTimeout(() =>{
+          window.location.reload()
+      }, 2000)
+      }
+    } catch (error) {
+      alert("An error occurred while submitting the form");
+      console.error("Submission error:", error);
+    }
+  }
+  }
   return (
     <div>
 
@@ -119,7 +195,7 @@ const Contact = () => {
               </a>
             </div>
           </div>
-          <form className="md:col-span-8 p-10" >
+          <form onSubmit={handleSubmit} className="md:col-span-8 p-10" >
             <div className="flex flex-wrap -mx-3 mb-6">
               <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <label
@@ -130,7 +206,8 @@ const Contact = () => {
                 </label>
                 <input
                   type="text"
-            
+                  value={userMessage.name}
+                  onChange={handleMessage}
                   className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                   id="grid-first-name"
                   placeholder="Name"
@@ -149,10 +226,11 @@ const Contact = () => {
                 <input
                   className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                   id="grid-last-name"
+                  value={userMessage.email}
+                  onChange={handleMessage}
                   type="email"
                   placeholder="abc@xyz.com"
                   name="email"
-                
                   required
                 />
               </div>
@@ -167,7 +245,10 @@ const Contact = () => {
                     YOUR MESSAGE
                   </label>
                   <textarea rows="10"
-                        className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"></textarea>
+                  value={userMessage.message}
+                  onChange={handleMessage}
+                  name="message"
+                  className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"></textarea>
                 </div>
               </div>
             
@@ -191,6 +272,19 @@ const Contact = () => {
                 >
                   Send
                 </button>
+                <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+                transition={Bounce}
+                />
               </div>
             </div>
           </form>
@@ -201,3 +295,5 @@ const Contact = () => {
 }
 
 export default Contact
+
+

@@ -7,6 +7,7 @@ import { VscAccount } from "react-icons/vsc";
 import { addUser } from '../service/api';
 import Cookies from 'js-cookie'; 
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 
 // Functional component representing the sign-in form
@@ -36,8 +37,24 @@ const handleSubmit = async (e) => {
       const res = await addUser(user);
       if (res && res.status === 201) {
         Cookies.set('token', res.data.token, { expires: 7 }); // Store token in cookies for 7 days
-        alert("Congratulation You Successfully Registerd to MeetUp");
-        navigate("/");
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Congratulation You Successfully Registerd to MeetUp",
+          showConfirmButton: false,
+          timer: 1500
+        });
+        setTimeout(() => {
+          navigate("/");
+        }, 1500);
+      }
+      if(res.status === 400){
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "User already exists with this username",
+          // footer: '<a href="#">Why do I have this issue?</a>'
+        });
       } else {
         alert("Not possible to submit");
         console.error("Unexpected response:", res);
