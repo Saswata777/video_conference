@@ -6,7 +6,7 @@ import users from "../../Images/users.png"
 import money from "../../Images/money.png"
 
 import { PieChart, Pie, Tooltip,  } from 'recharts';
-import { Sector, Cell,  } from 'recharts';
+import { Sector} from 'recharts';
 import { BarChart, Bar, Rectangle, XAxis, YAxis, CartesianGrid, Legend } from 'recharts';
 
 const Dashboard = () => {

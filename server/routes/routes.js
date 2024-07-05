@@ -70,8 +70,6 @@ router.post('/logout', (req, res) => {
     res.status(200).json({ message: 'Logout successful' });
   });
 
-
-
 //   logic for "Is user is loggedin or not" in routes.js
   router.get('/profile', authenticateToken, async (req, res) => {
     try {
@@ -82,24 +80,33 @@ router.post('/logout', (req, res) => {
     }
   });
 
-  //delete user
-//   router.delete('/:id',
-//   async(req,res)=>{
-//     const id=req.params.id;
-//     const{currentUserId,currentUserAdminStatus}=req.body
 
-//     if(currentUserId===id || currentUserAdminStatus){
-//         try {
-//             await UserModel.findByIdAndDelete(id);
-//             res.status(200).json("User deleted successfully")
-//         } catch (error) {
-//             res.status(500).json(error);
-//         }
-//     }else{
-//         res.status(403).json("Access denied!You can delete only your own profile")
-//     }
-// });
+  // API endpoint to get data
+router.get('/getUsers', async (req, res) => {
+    try {
+      const data = await User.find();
+      res.json(data);
+    } catch (err) {
+      res.status(400).send('Error: ' + err);
+    }
+  });
+router.get('/countUsers', async (req, res) => {
+    try {
+      const count = await User.countDocuments();
+      res.json({count});
+    } catch (err) {
+      res.status(400).send('Error: ' + err);
+    }
+  });
 
-
+// API endpoint to delete data
+router.delete('/getUsers/:id', async (req, res) => {
+    try {
+      await User.findByIdAndDelete(req.params.id);
+      res.status(200).json('Data deleted.');
+    } catch (err) {
+      res.status(400).send('Error: ' + err);
+    }
+  });
 
   export default router;
