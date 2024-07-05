@@ -1,5 +1,6 @@
 import express from 'express';
 import {User} from '../schema/user.js'
+import { Message } from '../schema/userMessage.js';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import authenticateToken from '../middleware/authenticateToken.js';
@@ -108,5 +109,25 @@ router.delete('/getUsers/:id', async (req, res) => {
       res.status(400).send('Error: ' + err);
     }
   });
+
+  router.post('/message', async (req, res) => {
+    try {
+      const messages = new Message({
+        name: req.body.name,
+        email: req.body.email,
+        message: req.body.message, // Ensure the field name is correct
+      });
+  
+      await messages.save();
+  
+      res.status(201).json({
+        message: 'Data Successfully Inserted',
+      });
+    } catch (error) {
+      console.error('Error inserting data:', error);
+      res.status(500).json('Internal Server Error');
+    }
+  });
+  
 
   export default router;
