@@ -23,9 +23,17 @@ app.get('/getUsers', async (req, res) => {
       res.status(400).send('Error: ' + err);
     }
   });
+  app.get('/countUsers', async (req, res) => {
+    try {
+      const count = await User.countDocuments();
+      res.json({count});
+    } catch (err) {
+      res.status(400).send('Error: ' + err);
+    }
+  });
 
 // API endpoint to delete data
-app.delete('/getUsers/:id', async (req, res) => {
+app.delete('/getUsers/:id', async (req, res) => { 
     try {
       await User.findByIdAndDelete(req.params.id);
       res.status(200).json('Data deleted.');
