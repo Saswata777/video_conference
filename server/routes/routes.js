@@ -90,6 +90,14 @@ router.get('/getUsers', async (req, res) => {
       res.status(400).send('Error: ' + err);
     }
   });
+router.get('/countUsers', async (req, res) => {
+    try {
+      const count = await User.countDocuments();
+      res.json({count});
+    } catch (err) {
+      res.status(400).send('Error: ' + err);
+    }
+  });
 
 // API endpoint to delete data
 router.delete('/getUsers/:id', async (req, res) => {
