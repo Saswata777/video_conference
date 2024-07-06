@@ -14,6 +14,7 @@ import AdminDashboard from './Pages/AdminDashboard';
 import AdminUser from './Pages/AdminUser';
 import Logout from './Components/Logout';
 import LogInAdmin from './Pages/AdminLogin';
+import AdminInbox from './Pages/AdminInbox';
 
 
 
@@ -33,6 +34,7 @@ function App() {
         <Route path="/create-meeting" element={<CreateMeeting />} />
         <Route path="/room/:roomID" element={< VideoCallPage/>} />
         <Route path="/admin/user" element={<AdminUser />} />
+        <Route path="/admin/inbox" element={<AdminInbox />} />
         <Route path="/admin-login" element={<LogInAdmin/>} />
         <Route path='/logout' element={<Logout />} />
       </Routes>
