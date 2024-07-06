@@ -34,11 +34,13 @@ const handleSubmit = async (e) => {
   if (!firstName || !lastName || !username || !password ||!confirmpassword) {
     alert("Please fill all the fields");
     
-  } else {
+  } 
+  else {
     try {
       if(password !==confirmpassword){
         alert("Confirm password is not same");
-      }else{
+      }
+      else{
         const res = await addUser(user);
         if (res && res.status === 201) {
           Cookies.set('token', res.data.token, { expires: 7 }); // Store token in cookies for 7 days
@@ -60,19 +62,48 @@ const handleSubmit = async (e) => {
             text: "User already exists with this username",
             // footer: '<a href="#">Why do I have this issue?</a>'
           });
-        } else {
+        } 
+        else {
           alert("Not possible to submit");
           console.error("Unexpected response:", res);
         }
       }
-      
-
-    } catch (error) {
+    }  
+    catch (error) {
       alert("An error occurred while submitting the form");
       console.error("Submission error:", error);
     }
   }
 };
+  
+ //       const res = await addUser(user);
+//       // console.log('Submission Response:', res);
+//       if (res && res.status === 201) {
+//         Cookies.set('token', res.data.token, { expires: 7 }); // Store token in cookies for 7 days
+//         Swal.fire({
+//           position: "top-end",
+//           icon: "success",
+//           title: "Congratulation You Successfully Registerd to MeetUp",
+//           showConfirmButton: false,
+//           timer: 1500
+//         });
+//         setTimeout(() => {
+//           navigate("/");
+//         }, 1500);
+//       }
+//       else if(res.status === 400){
+//         Swal.fire({
+//           icon: "error",
+//           title: "Oops...",
+//           text: "User already exists with this username",
+//           // footer: '<a href="#">Why do I have this issue?</a>'
+//         });
+//       } else {
+//         alert("Not possible to submit");
+//         console.error("Unexpected response:", res);
+//       }
+      
+
 
 
 
