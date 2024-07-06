@@ -35,6 +35,7 @@ const handleSubmit = async (e) => {
   } else {
     try {
       const res = await addUser(user);
+      // console.log('Submission Response:', res);
       if (res && res.status === 201) {
         Cookies.set('token', res.data.token, { expires: 7 }); // Store token in cookies for 7 days
         Swal.fire({
@@ -48,7 +49,7 @@ const handleSubmit = async (e) => {
           navigate("/");
         }, 1500);
       }
-      if(res.status === 400){
+      else if(res.status === 400){
         Swal.fire({
           icon: "error",
           title: "Oops...",
