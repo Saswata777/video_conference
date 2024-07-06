@@ -1,16 +1,16 @@
 import React from 'react'
 import Navbar from '../Components/Navbar'
 import Foooter from '../Components/Foooter'
-import LogInForm from '../Components/LogInForm'
+import AdminLoginF from '../Components/admin/AdminLoginForm'
 
-const  LogIn = () => {
+const  LogInAdmin = () => {
   return (
     <div>
       <Navbar/>
-      <LogInForm/>
+      <AdminLoginF/>
       <Foooter/>
     </div>
   )
 }
 
-export default LogIn
+export default LogInAdmin

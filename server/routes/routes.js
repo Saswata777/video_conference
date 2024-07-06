@@ -51,7 +51,36 @@ router.post('/signup', async (req, res) => {
       if (!isMatch) {
         return res.status(400).json('Invalid password');
       }
+      
+      const token = jwt.sign({ id: user._id }, JWT_SECRET, { expiresIn: '1h' });
   
+      res.cookie('token', token, { httpOnly: true, secure: true });
+      res.json({
+        message: 'Login successful',
+        token
+      });
+    } catch (error) {
+      console.error('Login error:', error);
+      res.status(500).json('Internal Server Error');
+    }
+  });
+  //Admin login
+  router.post('/loginadmin', async (req, res) => {
+    try {
+      const user = await User.findOne({ username: req.body.username });
+      if (!user) {
+        return res.status(400).json('Invalid username');
+      }
+  
+      const isMatch = await bcrypt.compare(req.body.password, user.password);
+      if (!isMatch) {
+        return res.status(400).json('Invalid password');
+      }
+      
+      if (!user.isAdmin) {
+        return res.status(403).json('Not Admin');
+      }
+
       const token = jwt.sign({ id: user._id }, JWT_SECRET, { expiresIn: '1h' });
   
       res.cookie('token', token, { httpOnly: true, secure: true });

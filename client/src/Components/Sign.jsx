@@ -20,7 +20,8 @@ const [user, setUser] = useState({
   firstName: '',
   lastName: '',
   username: '',
-  password: ''
+  password: '',
+  confirmpassword:''
 });
 
 const handleChange = (e) => {
@@ -29,43 +30,80 @@ const handleChange = (e) => {
 
 const handleSubmit = async (e) => {
   e.preventDefault();
-  const { firstName, lastName, username, password } = user;
-  if (!firstName || !lastName || !username || !password) {
+  const { firstName, lastName, username, password,confirmpassword } = user;
+  if (!firstName || !lastName || !username || !password ||!confirmpassword) {
     alert("Please fill all the fields");
-  } else {
+    
+  } 
+  else {
     try {
-      const res = await addUser(user);
-      // console.log('Submission Response:', res);
-      if (res && res.status === 201) {
-        Cookies.set('token', res.data.token, { expires: 7 }); // Store token in cookies for 7 days
-        Swal.fire({
-          position: "top-end",
-          icon: "success",
-          title: "Congratulation You Successfully Registerd to MeetUp",
-          showConfirmButton: false,
-          timer: 1500
-        });
-        setTimeout(() => {
-          navigate("/");
-        }, 1500);
+      if(password !==confirmpassword){
+        alert("Confirm password is not same");
       }
-      else if(res.status === 400){
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: "User already exists with this username",
-          // footer: '<a href="#">Why do I have this issue?</a>'
-        });
-      } else {
-        alert("Not possible to submit");
-        console.error("Unexpected response:", res);
+      else{
+        const res = await addUser(user);
+        if (res && res.status === 201) {
+          Cookies.set('token', res.data.token, { expires: 7 }); // Store token in cookies for 7 days
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Congratulation You Successfully Registerd to MeetUp",
+            showConfirmButton: false,
+            timer: 1500
+          });
+          setTimeout(() => {
+            navigate("/");
+          }, 1500);
+        }
+        if(res.status === 400){
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "User already exists with this username",
+            // footer: '<a href="#">Why do I have this issue?</a>'
+          });
+        } 
+        else {
+          alert("Not possible to submit");
+          console.error("Unexpected response:", res);
+        }
       }
-    } catch (error) {
+    }  
+    catch (error) {
       alert("An error occurred while submitting the form");
       console.error("Submission error:", error);
     }
   }
 };
+  
+ //       const res = await addUser(user);
+//       // console.log('Submission Response:', res);
+//       if (res && res.status === 201) {
+//         Cookies.set('token', res.data.token, { expires: 7 }); // Store token in cookies for 7 days
+//         Swal.fire({
+//           position: "top-end",
+//           icon: "success",
+//           title: "Congratulation You Successfully Registerd to MeetUp",
+//           showConfirmButton: false,
+//           timer: 1500
+//         });
+//         setTimeout(() => {
+//           navigate("/");
+//         }, 1500);
+//       }
+//       else if(res.status === 400){
+//         Swal.fire({
+//           icon: "error",
+//           title: "Oops...",
+//           text: "User already exists with this username",
+//           // footer: '<a href="#">Why do I have this issue?</a>'
+//         });
+//       } else {
+//         alert("Not possible to submit");
+//         console.error("Unexpected response:", res);
+//       }
+      
+
 
 
 
@@ -79,6 +117,20 @@ const handleSubmit = async (e) => {
   const textColor = darkMode ? 'text-white' : 'text-gray-800';
   const inputBgColor = darkMode ? 'bg-gray-700' : 'bg-white';
   const inputBorderColor = darkMode ? 'border-gray-600' : 'border-gray-300';
+
+  //password visible
+
+const[passvisible,setpassvisible]=useState(false)
+
+const handlePass=()=>{
+  setpassvisible(!passvisible)
+}
+
+const[passvisiblec,setpassvisiblec]=useState(false)
+
+const handlePassc=()=>{
+  setpassvisiblec(!passvisiblec)
+}
 
   return (
     <div className={`${bgColor} font-sans min-h-screen flex flex-col items-center justify-center py-6 px-4`}>
@@ -159,14 +211,14 @@ const handleSubmit = async (e) => {
                 <div className="relative flex items-center">
                   <input
                     name="password"
-                    type="password"
+                    type={passvisible?"text":"password"}
                     value={user.password}
                     onChange={handleChange}
                     required
                     className={`w-full text-sm border ${inputBorderColor} px-4 py-3 rounded-md outline-blue-600 ${textColor}`}
                     placeholder="Enter password"
                   />
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb" className="w-4 h-4 absolute right-4 cursor-pointer" viewBox="0 0 128 128">
+                  <svg xmlns="http://www.w3.org/2000/svg" onClick={handlePass} fill="#bbb" stroke="#bbb" className="w-4 h-4 absolute right-4 cursor-pointer" viewBox="0 0 128 128">
                     <path d="M64 104C22.127 104 1.367 67.496.504 65.943a4 4 0 0 1 0-3.887C1.367 60.504 22.127 24 64 24s62.633 36.504 63.496 38.057a4 4 0 0 1 0 3.887C126.633 67.496 105.873 104 64 104zM8.707 63.994C13.465 71.205 32.146 96 64 96c31.955 0 50.553-24.775 55.293-31.994C114.535 56.795 95.854 32 64 32 32.045 32 13.447 56.775 8.707 63.994zM64 88c-13.234 0-24-10.766-24-24s10.766-24 24-24 24 10.766 24 24-10.766 24-24 24zm0-40c-8.822 0-16 7.178-16 16s7.178 16 16 16 16-7.178 16-16-7.178-16-16-16z" data-original="#000000"></path>
                   </svg>
                 </div>
@@ -176,12 +228,14 @@ const handleSubmit = async (e) => {
                 <div className="relative flex items-center">
                   <input
                     name="confirmpassword"
-                    type="password"
+                    type={passvisiblec?"text":"password"}
+                    value={user.confirmpassword}
+                    onChange={handleChange}
                     required
                     className={`w-full text-sm border ${inputBorderColor} px-4 py-3 rounded-md outline-blue-600 ${textColor}`}
                     placeholder="Enter password"
                   />
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb" className="w-4 h-4 absolute right-4 cursor-pointer" viewBox="0 0 128 128">
+                  <svg xmlns="http://www.w3.org/2000/svg" onClick={handlePassc} fill="#bbb" stroke="#bbb" className="w-4 h-4 absolute right-4 cursor-pointer" viewBox="0 0 128 128">
                     <path d="M64 104C22.127 104 1.367 67.496.504 65.943a4 4 0 0 1 0-3.887C1.367 60.504 22.127 24 64 24s62.633 36.504 63.496 38.057a4 4 0 0 1 0 3.887C126.633 67.496 105.873 104 64 104zM8.707 63.994C13.465 71.205 32.146 96 64 96c31.955 0 50.553-24.775 55.293-31.994C114.535 56.795 95.854 32 64 32 32.045 32 13.447 56.775 8.707 63.994zM64 88c-13.234 0-24-10.766-24-24s10.766-24 24-24 24 10.766 24 24-10.766 24-24 24zm0-40c-8.822 0-16 7.178-16 16s7.178 16 16 16 16-7.178 16-16-7.178-16-16-16z" data-original="#000000"></path>
                   </svg>
                 </div>
