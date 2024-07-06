@@ -139,6 +139,27 @@ router.delete('/getUsers/:id', async (req, res) => {
     }
   });
 
+  // API endpoint to get message
+  router.get('/getMessage', async (req, res) => {
+    try {
+      const data = await Message.find();
+      res.json(data);
+    } catch (err) {
+      res.status(400).send('Error: ' + err);
+    }
+  });
+
+// API endpoint to delete message
+router.delete('/getMessage/:id', async (req, res) => {
+  try {
+    await Message.findByIdAndDelete(req.params.id);
+    res.status(200).json('Message deleted.');
+  } catch (err) {
+    res.status(400).send('Error: ' + err);
+  }
+});
+
+
   router.post('/message', async (req, res) => {
     try {
       const messages = new Message({
