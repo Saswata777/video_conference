@@ -8,6 +8,7 @@ import Cookies from 'js-cookie';
 import { loginUser } from '../service/api';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import Logo from "../Images/logo.png"
 // Functional component representing the sign-in form
 const LogInForm = () => {
   // State to manage dark mode
@@ -88,9 +89,9 @@ const handlePass=()=>{
       
       <div className="max-w-md w-full">
         
-        {/* <a href="javascript:void(0)">
-          <img src="https://readymadeui.com/readymadeui.svg	" alt="logo" className="w-40 mb-8 mx-auto block" />
-        </a> */}
+         <a href="/">
+          <img src={Logo} alt="logo" className="w-20 h-20 mb-8 mx-auto block" />
+        </a>
         <div className={`p-8 rounded-2xl ${inputBgColor} shadow ${textColor}`}>
           <div className="justify-end" style={{display:"flex",justifyContent:"flex-end"}}>
             <button onClick={toggleDarkMode} className={`px-3 py-1 rounded-full ${darkMode ? 'bg-white text-gray-800' : 'bg-gray-800 text-white'}`}>

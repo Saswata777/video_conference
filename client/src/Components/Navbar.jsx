@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { LuLogOut } from "react-icons/lu";
 import { isLoggedIn } from "../utils/auth";
-
+import Logo from "../Images/logo.png"
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
  
@@ -21,12 +21,12 @@ const Navbar = () => {
             className="flex items-center space-x-3 rtl:space-x-reverse"
           >
             <img
-              src="https://flowbite.com/docs/images/logo.svg"
-              className="h-8"
+              src={Logo}
+              className="h-12"
               alt="Flowbite Logo"
             />
             <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">
-              FusionMeet
+              MeetUp
             </span>
           </a>
           <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
