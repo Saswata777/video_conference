@@ -30,7 +30,7 @@ const Sidebar = () => {
         {
             title:"Logout",
             logo:<IoLogOut/>,
-             path: "/admin-login"
+             path: "/logout"
         },
     ]
     return (
@@ -57,11 +57,6 @@ const Sidebar = () => {
                         ))}
                     </ul>
                 </div> 
-               
-                
-            
-               
-                
             </div>
         </div>
     )
