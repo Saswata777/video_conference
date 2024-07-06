@@ -55,18 +55,21 @@ const handleSubmit = async (e) => {
             navigate("/");
           }, 1500);
         }
-        if(res.status === 400){
+        else if (res && res.status) {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: `Unexpected response status: ${res.status}`,
+          });
+          console.error("Unexpected response:", res);
+        }
+        else if(res.status === 400){
           Swal.fire({
             icon: "error",
             title: "Oops...",
             text: "User already exists with this username",
-            // footer: '<a href="#">Why do I have this issue?</a>'
           });
         } 
-        else {
-          alert("Not possible to submit");
-          console.error("Unexpected response:", res);
-        }
       }
     }  
     catch (error) {
