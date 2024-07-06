@@ -30,7 +30,7 @@ const Sidebar = () => {
         {
             title:"Logout",
             logo:<IoLogOut/>,
-             path: "/admin-login"
+             path: "/logout"
         },
     ]
     return (
