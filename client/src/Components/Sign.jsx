@@ -8,7 +8,7 @@ import { addUser } from '../service/api';
 import Cookies from 'js-cookie'; 
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
-
+import Logo from "../Images/logo.png"
 
 // Functional component representing the sign-in form
 const Sign = () => {
@@ -139,9 +139,9 @@ const handlePassc=()=>{
     <div className={`${bgColor} font-sans min-h-screen flex flex-col items-center justify-center py-6 px-4`}>
 
       <div className="max-w-lg w-full">
-        {/* <a href="javascript:void(0)">
-          <img src="https://readymadeui.com/readymadeui.svg	" alt="logo" className="w-40 mb-8 mx-auto block" />
-        </a> */}
+      <a href="/">
+          <img src={Logo} alt="logo" className="w-20 h-20 mb-8 mx-auto block" />
+        </a>
 
         <div className={`p-8 rounded-2xl ${inputBgColor} shadow ${textColor}`}>
           <div className="justify-end" style={{ display: "flex", justifyContent: "flex-end" }}>

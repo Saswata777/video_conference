@@ -1,6 +1,6 @@
 import React from 'react';
 import './footer.css'
-
+import Logo from "../Images/logo.png"
 const Foooter = () => {
   return (
     <footer className="bg-neutral-800 text-center text-surface/7 text-white/75 lg:text-left">
@@ -62,8 +62,8 @@ const Foooter = () => {
         </div>
        
       </div>
-      <div className='pb-2'>
-        © 2024 Copyright:CompanyName
+      <div className='pb-2 flex justify-center'>
+        © 2024 Copyright:MeetUp<img src={Logo} className='h-6' />
         </div>
 
       {/* <div className="mx-6 py-10 text-center md:text-left">
