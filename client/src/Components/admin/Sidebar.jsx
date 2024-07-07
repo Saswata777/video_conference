@@ -42,10 +42,10 @@ const Sidebar = () => {
                         <img
                             src={Logo}
                             className="h-12"
-                            alt="Flowbite Logo"
+                            alt="logo"
                         />
                         <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">
-                            FusionMeet
+                        MeetUp
                         </span>
                     </a>
                     <div className=' items-center'>

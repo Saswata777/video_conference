@@ -63,7 +63,7 @@ const Foooter = () => {
        
       </div>
       <div className='pb-2 flex justify-center'>
-        © 2024 Copyright:MeetUp<img src={Logo} className='h-6' />
+        © 2024 Copyright:MeetUp<img src={Logo} alt='logo' className='h-6' />
         </div>
 
       {/* <div className="mx-6 py-10 text-center md:text-left">

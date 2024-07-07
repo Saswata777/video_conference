@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import delIcon from "../../Images/del.png";
 import Swal from "sweetalert2";
+import './user.css'
 
 // const users=[
 //   {
@@ -98,7 +99,7 @@ const User = () => {
   };
 
   return (
-      <div className="p-6 overflow-y-scroll overflow-x-scroll px-0 max-h-[100vh] bg-gray-200 me-0">
+      <div className="p-6 mostly-customized-scrollbar overflow-y-scroll w-[100vw] overflow-x-scroll px-0 max-h-[100vh] bg-gray-200 me-0">
         <table className="mt-4 w-full min-w-max table-auto text-left">
           <thead>
             <tr>

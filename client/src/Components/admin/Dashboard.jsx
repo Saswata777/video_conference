@@ -4,6 +4,7 @@ import eye from "../../Images/eye.png";
 import meet from "../../Images/meet.webp";
 import users from "../../Images/users.png";
 import money from "../../Images/money.png";
+import './dashboard.css'
 
 import { PieChart, Pie, Tooltip } from "recharts";
 import { Sector } from "recharts";
@@ -196,10 +197,10 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="p-6 w-[100vw] overflow-y-scroll overflow-x-scroll px-0 max-h-[100vh]  me-0">
+    <div className="p-6 mostly-customized-scrollbar w-[100vw] overflow-y-scroll overflow-x-scroll px-0 max-h-[100vh]  me-0">
       <div className="statCards w-[95%] flex flex-wrap justify-around">
         {Stats.map((stat) => (
-          <div class="m-3 w-[200px] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+          <div class="m-3 w-[220px] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <div class="flex  flex-col items-center justify-center pb-10">
               {/* <div className='w-24 h-24 mb-3 rounded-full shadow-lg object-cover'>{stat.logo}</div> */}
               <img
@@ -219,11 +220,12 @@ const Dashboard = () => {
       </div>
       <div className="flex flex-wrap gap-x-2 mx-2 my-3">
         <div className="upperhalf flex-wrap w-[95%] flex justify-around">
-          <div className="pie1 flex justify-center flex-col w-[315px] border-2  border-gray-200 ">
+          <div className="pie1 flex justify-center flex-col  border-2  border-gray-200 ">
             <h1 className="text-xl text-center p-2 text-blue-600 font-semibold">
               User Domain
             </h1>
-            <PieChart width={300} height={300}>
+            <div className="w-[100%] flex justify-center">
+            <PieChart width={400} height={300}>
               <Pie
                 dataKey="value"
                 isAnimationActive={false}
@@ -237,13 +239,15 @@ const Dashboard = () => {
 
               <Tooltip />
             </PieChart>
+            </div>
           </div>
 
-          <div className="pie2 w-[315px] border-2 border-gray-200 ">
+          <div className="pie2  border-2 border-gray-200 ">
             <h1 className="text-xl text-center p-2 text-blue-600 font-semibold">
               Viewer Analytics
             </h1>
-            <PieChart width={300} height={300}>
+            <div className=" w-[100%] flex justify-center">
+            <PieChart width={400} height={300}>
               <Pie
                 style={{ justifyContent: "center" }}
                 activeIndex={state.activeIndex}
@@ -258,6 +262,8 @@ const Dashboard = () => {
                 onMouseEnter={onPieEnter}
               />
             </PieChart>
+
+            </div>
           </div>
         </div>
         <div className="lowerhalf w-[95%] flex justify-center">
