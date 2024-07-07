@@ -15,8 +15,7 @@ import AdminUser from './Pages/AdminUser';
 import Logout from './Components/Logout';
 import LogInAdmin from './Pages/AdminLogin';
 import AdminInbox from './Pages/AdminInbox';
-
-
+import ProtectedRoute from './Components/ProtectedRoute.js';
 
 function App() {
   return (
@@ -30,16 +29,35 @@ function App() {
         <Route path='/services'element={<ServicePage/>}/>
         <Route path='/about' element={<AboutPage/>} /> 
         <Route path='/contact' element={<ContactPage/>} /> 
-        <Route path='/admin/dashboard' element={<AdminDashboard/>} />
-        <Route path="/create-meeting" element={<CreateMeeting />} />
-        <Route path="/room/:roomID" element={< VideoCallPage/>} />
-        <Route path="/admin/user" element={<AdminUser />} />
-        <Route path="/admin/inbox" element={<AdminInbox />} />
         <Route path="/admin-login" element={<LogInAdmin/>} />
         <Route path='/logout' element={<Logout />} />
+        <Route path='/admin/dashboard' element={
+            <ProtectedRoute adminOnly={true}>
+              <AdminDashboard />
+            </ProtectedRoute>
+          } />
+          <Route path='/admin/user' element={
+            <ProtectedRoute adminOnly={true}>
+              <AdminUser />
+            </ProtectedRoute>
+          } />
+          <Route path='/admin/inbox' element={
+            <ProtectedRoute adminOnly={true}>
+              <AdminInbox />
+            </ProtectedRoute>
+          } />
+          <Route path='/create-meeting' element={
+            <ProtectedRoute>
+              <CreateMeeting />
+            </ProtectedRoute>
+          } />
+          <Route path='/room/:roomID' element={
+            <ProtectedRoute>
+              <VideoCallPage />
+            </ProtectedRoute>
+          } />
       </Routes>
       </BrowserRouter>
-      
     </div>
   );
 }

@@ -1,19 +1,20 @@
-import React, {useState} from 'react'
-import { Messages } from '../service/api.js'
-import Swal from 'sweetalert2'
-import { Bounce, ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import 'animate.css';
+import React, { useState } from "react";
+import { Messages } from "../service/api.js";
+import Swal from "sweetalert2";
+import { Bounce, ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "animate.css";
 
 const Contact = () => {
-  const [userMessage, setUserMessage]= useState({
-    name:'',
-    email:'',
-    message:''
-  })
+  const [userMessage, setUserMessage] = useState({
+    name: "",
+    email: "",
+    subject:"",
+    message: ""
+  });
 
-  const notify = ()=>{
-    toast.success(' Message Send!', {
+  const notify = () => {
+    toast.success(" Message Send!", {
       position: "top-right",
       autoClose: 5000,
       hideProgressBar: false,
@@ -23,63 +24,60 @@ const Contact = () => {
       progress: undefined,
       theme: "light",
       transition: Bounce,
-      });
-  }
+    });
+  };
 
-
-  const handleMessage = (e)=>{
+  const handleMessage = (e) => {
     setUserMessage({ ...userMessage, [e.target.name]: e.target.value });
-  }
-  const handleSubmit = async(e)=>{
+  };
+  const handleSubmit = async (e) => {
     e.preventDefault();
-  const { name, email, message } = userMessage;
-  if (!name || !email || !message) {
-    Swal.fire({
-      title: "Please fill all the fields",
-      showClass: {
-        popup: `
+    const { name, email, subject, message } = userMessage;
+    if (!name || !subject || !email || !message) {
+      Swal.fire({
+        title: "Please fill all the fields",
+        showClass: {
+          popup: `
           animate__animated
           animate__fadeInUp
           animate__faster
-        `
-      },
-      hideClass: {
-        popup: `
+        `,
+        },
+        hideClass: {
+          popup: `
           animate__animated
           animate__fadeOutDown
           animate__faster
-        `
+        `,
+        },
+      });
+    } else {
+      try {
+        const res = await Messages(userMessage);
+        if (res && res.status === 201) {
+          notify();
+          setTimeout(() => {
+            window.location.reload();
+          }, 5500);
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Unable to submit",
+          });
+          setTimeout(() => {
+            window.location.reload();
+          }, 2000);
+        }
+      } catch (error) {
+        alert("An error occurred while submitting the form");
+        console.error("Submission error:", error);
       }
-    });
-  } else {
-    try {
-      const res = await Messages(userMessage);
-      if (res && res.status === 201) {
-        notify();
-        setTimeout(() =>{
-          window.location.reload()
-      }, 5500)
-      }
-       else {
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: "Unable to submit",
-        });
-        setTimeout(() =>{
-          window.location.reload()
-      }, 2000)
-      }
-    } catch (error) {
-      alert("An error occurred while submitting the form");
-      console.error("Submission error:", error);
     }
-  }
-  }
+  };
   return (
     <div>
-
-<div className="max-w-screen-lg mx-auto p-5">
+      <div className="max-w-screen-lg mx-auto p-5">
         <div className="grid grid-cols-1 md:grid-cols-12 border">
           <div className="bg-gray-900 md:col-span-4 p-10 text-white">
             <p className="mt-4 text-sm leading-7 font-regular uppercase">
@@ -89,7 +87,10 @@ const Contact = () => {
               Welcome <span className="text-indigo-600">To MeetUp</span>
             </h3>
             <p className="mt-4 leading-7 text-gray-200">
-            Lorem ipsum dolor sit amet. Sit sint consequatur cum quasi iste quo autem fuga. Id aspernatur voluptas aut officia amet ut repellat consequuntur et explicabo aliquam in internos magni.  
+              We're here to help! Whether you have questions, need support, or
+              just want to share your feedback, our team at MeetUp is ready to
+              assist you.  Fill out the contact form
+              below, and we'll get back to you as soon as possible.Thank you for choosing MeetUp!
             </p>
 
             <div className="flex items-center mt-5">
@@ -195,7 +196,7 @@ const Contact = () => {
               </a>
             </div>
           </div>
-          <form onSubmit={handleSubmit} className="md:col-span-8 p-10" >
+          <form onSubmit={handleSubmit} className="md:col-span-8 p-10">
             <div className="flex flex-wrap -mx-3 mb-6">
               <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <label
@@ -212,7 +213,6 @@ const Contact = () => {
                   id="grid-first-name"
                   placeholder="Name"
                   name="name"
-           
                   required
                 />
               </div>
@@ -235,23 +235,42 @@ const Contact = () => {
                 />
               </div>
             </div>
-            
-              <div className="flex flex-wrap -mx-3 mb-6">
-                <div className="w-full px-3">
-                  <label
-                    className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                    for="grid-password"
-                  >
-                    YOUR MESSAGE
-                  </label>
-                  <textarea rows="10"
+
+            <div className="w-full mb-5">
+                <label
+                  className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                  htmlFor="grid-last-name"
+                >
+                  Subject
+                </label>
+                <input
+                  className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                  id="grid-last-name"
+                  value={userMessage.subject}
+                  onChange={handleMessage}
+                  type="test"
+                  placeholder="Subject"
+                  name="subject"
+                  required
+                />
+              </div>
+            <div className="flex flex-wrap -mx-3 mb-6">
+              <div className="w-full px-3">
+                <label
+                  className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                  for="grid-password"
+                >
+                  YOUR MESSAGE
+                </label>
+                <textarea
+                  rows="10"
                   value={userMessage.message}
                   onChange={handleMessage}
                   name="message"
-                  className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"></textarea>
-                </div>
+                  className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                ></textarea>
               </div>
-            
+            </div>
 
             <div className="flex flex-wrap -mx-3 mb-6">
               <div className="flex justify-between w-full px-3">
@@ -259,7 +278,6 @@ const Contact = () => {
                   <label className="block text-gray-500 font-bold">
                     <input
                       name="isDoctor"
-
                       className="mr-2 leading-tight"
                       type="checkbox"
                     />
@@ -273,17 +291,17 @@ const Contact = () => {
                   Send
                 </button>
                 <ToastContainer
-                position="top-right"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="light"
-                transition={Bounce}
+                  position="top-right"
+                  autoClose={5000}
+                  hideProgressBar={false}
+                  newestOnTop={false}
+                  closeOnClick
+                  rtl={false}
+                  pauseOnFocusLoss
+                  draggable
+                  pauseOnHover
+                  theme="light"
+                  transition={Bounce}
                 />
               </div>
             </div>
@@ -291,9 +309,7 @@ const Contact = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Contact
-
-
+export default Contact;

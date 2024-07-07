@@ -59,18 +59,21 @@ const Inbox = () => {
     setSelectedMessage(null);
   };
 
+
+
+
   return (
-    <div className="w-full  mx-auto p-4">
-      <h2 className="text-3xl font-bold text-center mb-4">Inbox</h2>
+    <div className="p-6 mostly-customized-scrollbar overflow-y-scroll w-[100vw] overflow-x-scroll px-0 max-h-[100vh] bg-gray-200 me-0">
+        <div className="text-3xl font-bold text-center mb-4">Inbox</div>
       {data.length === 0 ? (
         <p className="text-center text-gray-500">No messages.</p>
       ) : (
         <ul>
           {data.map(message => (
-            <li key={message._id} className="border border-gray-400 bg-cyan-500 text-white rounded-lg p-4 mb-4 flex justify-between items-center">
+            <li key={message._id} className="shadow-custom border border-gray-400 text-slate-800 rounded-lg p-4 mb-4 flex justify-between items-center mx-5">
               <div>
                 <p className="font-semibold">{message.name}</p>
-                <p className="text-sm text-gray-100">{message.messageTime}</p>
+                <p className="text-sm text-slate-400">{message.messageTime}</p>
               </div>
               <div className="flex space-x-2">
                 <button onClick={() => handleView(message)} className="text-gray-500 hover:text-gray-700">
@@ -88,8 +91,9 @@ const Inbox = () => {
       {selectedMessage && (
         <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center">
           <div className="bg-white p-6 rounded-lg max-w-lg w-full">
-            <h3 className="text-xl font-bold mb-2">{selectedMessage.email}</h3>
-            <p className="text-sm text-gray-600 mb-4"><strong>From:</strong> {selectedMessage.name}</p>
+            <h3 className="text-xl font-bold mb-2">{selectedMessage.subject}</h3>
+            <p className="text-sm text-gray-600 mb-4"><strong>From: </strong> {selectedMessage.name}</p>
+            <p className="text-sm text-gray-600 mb-4"><strong>Subject: </strong>{selectedMessage.subject}</p>
             <p className="mb-4">{selectedMessage.message}</p>
             <button onClick={handleClose} className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">Close</button>
           </div>

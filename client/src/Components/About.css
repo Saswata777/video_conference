@@ -7,7 +7,7 @@
     flex-direction: column;
     padding: 5px;
     justify-content: center;
-    text-align: center;
+    /* text-align: center; */
     width: 90%;
     margin: auto;
 }
@@ -19,6 +19,10 @@
     padding: 5px;
     margin: auto;
 }
-.xxx{
-    background-image: linear-gradient(to top, #fddb92 0%, #d1fdff 100%);
+
+
+@media ( max-width: 600px ) {
+        .aboutdetails{
+            text-align: center;
+        }
 }

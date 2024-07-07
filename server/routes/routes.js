@@ -86,7 +86,12 @@ router.post('/signup', async (req, res) => {
       res.cookie('token', token, { httpOnly: true, secure: true });
       res.json({
         message: 'Login successful',
-        token
+        token,
+        user: {
+            id: user._id,
+            username: user.username,
+            isAdmin: user.isAdmin,
+          }
       });
     } catch (error) {
       console.error('Login error:', error);
@@ -165,6 +170,7 @@ router.delete('/getMessage/:id', async (req, res) => {
       const messages = new Message({
         name: req.body.name,
         email: req.body.email,
+        subject: req.body.subject,
         message: req.body.message, // Ensure the field name is correct
       });
   

@@ -14,21 +14,44 @@ export const addUser = async (data) => {
 export const loginUser = async (data) => {
   try {
     const response = await axios.post(`${URL}/login`, data);
+    const { token, user } = response.data;
+  
+      localStorage.setItem('token', token);
+      localStorage.setItem('user', JSON.stringify(user));
     return response;
   } catch (error) {
     console.log("While connecting the API", error);
     return error.response;  // Return the error response if the request fails
   }
 }
+// export const loginAdmin = async (data) => {
+//   try {
+//     const response = await axios.post(`${URL}/loginadmin`, data);
+//     return response;
+//   } catch (error) {
+//     console.log("While connecting the API", error);
+//     return error.response;  // Return the error response if the request fails
+//   }
+// }
+
 export const loginAdmin = async (data) => {
-  try {
-    const response = await axios.post(`${URL}/loginadmin`, data);
-    return response;
-  } catch (error) {
-    console.log("While connecting the API", error);
-    return error.response;  // Return the error response if the request fails
-  }
-}
+    try {
+      const response = await axios.post(`${URL}/loginadmin`, data);
+      const { token, user } = response.data;
+  
+      localStorage.setItem('token', token);
+      localStorage.setItem('user', JSON.stringify(user));
+  
+      return response;
+    } catch (error) {
+      console.log("While connecting the API", error);
+      return error.response; // Return the error response if the request fails
+    }
+  };
+  
+
+
+
 
 export const logoutUser = async () => {
     try {
