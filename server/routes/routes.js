@@ -57,7 +57,12 @@ router.post('/signup', async (req, res) => {
       res.cookie('token', token, { httpOnly: true, secure: true });
       res.json({
         message: 'Login successful',
-        token
+        token,
+        user: {
+            id: user._id,
+            username: user.username,
+            isAdmin: user.isAdmin,
+          }
       });
     } catch (error) {
       console.error('Login error:', error);
