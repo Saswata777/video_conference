@@ -47,7 +47,7 @@ const BusinessPlan = () => {
             <span className='ml-2 font-bold text-lg text-orange-500'>billed annualy</span>
             <div className='ccontents text-white'>
                 <ul>
-                    <li className='lix'>Multiple co-hosts</li>
+                    <li className='lix'>Multiple organizers</li>
                     <li className='lix'>YouTube live streaming</li>
                     <li className='lix'>Custom branding solution</li>
                 </ul>

@@ -16,6 +16,9 @@ import Logout from './Components/Logout';
 import LogInAdmin from './Pages/AdminLogin';
 import AdminInbox from './Pages/AdminInbox';
 import ProtectedRoute from './Components/ProtectedRoute.js';
+import NotFound from './Pages/NotFound.jsx';
+
+
 
 function App() {
   return (
@@ -52,6 +55,7 @@ function App() {
             </ProtectedRoute>
           } />
           <Route path='/room/:roomID' element={<VideoCallPage />} />
+          <Route path="*" element={<NotFound />} />
       </Routes>
       </BrowserRouter>
     </div>
