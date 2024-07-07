@@ -10,7 +10,7 @@ import { User } from './schema/user.js';
 const app = express();
 
 app.use(cors({
-    origin: 'http://localhost:3000', // Replace with your frontend URL
+    origin: 'https://meetup-zeta-vert.vercel.app/', // Replace with your frontend URL
     methods: ['GET', 'POST', 'DELETE'],
     // allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true
