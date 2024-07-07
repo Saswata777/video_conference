@@ -24,23 +24,47 @@ const [user, setUser] = useState({
   confirmpassword:''
 });
 
+const validatePassword = (password) => {
+  const isValid = /^(?=.*[a-zA-Z])(?=.*\d)[A-Za-z\d]{8,}$/.test(password);
+  return isValid;
+};
+
 const handleChange = (e) => {
   setUser({ ...user, [e.target.name]: e.target.value });
+
+  if (e.target.name === 'password' || e.target.name === 'confirmpassword') {
+    validatePassword(e.target.value);
+  }
 };
 
 const handleSubmit = async (e) => {
   e.preventDefault();
   const { firstName, lastName, username, password,confirmpassword } = user;
   if (!firstName || !lastName || !username || !password ||!confirmpassword) {
-    alert("Please fill all the fields");
     
-  } 
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "Please fill all the fields",
+    });
+  }
+  else if (!validatePassword(password)) {
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "Password must be alphanumeric and at least 8 characters long",
+    });
+  }
+  else if(password !==confirmpassword){
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "Confirm password is not same",
+    });
+    
+  }
   else {
     try {
-      if(password !==confirmpassword){
-        alert("Confirm password is not same");
-      }
-      else{
         const res = await addUser(user);
         if (res && res.status === 201) {
           Cookies.set('token', res.data.token, { expires: 7 }); // Store token in cookies for 7 days
@@ -70,7 +94,7 @@ const handleSubmit = async (e) => {
             text: "User already exists with this username",
           });
         } 
-      }
+      
     }  
     catch (error) {
       alert("An error occurred while submitting the form");
