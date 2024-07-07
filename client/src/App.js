@@ -51,11 +51,7 @@ function App() {
               <CreateMeeting />
             </ProtectedRoute>
           } />
-          <Route path='/room/:roomID' element={
-            <ProtectedRoute>
-              <VideoCallPage />
-            </ProtectedRoute>
-          } />
+          <Route path='/room/:roomID' element={<VideoCallPage />} />
       </Routes>
       </BrowserRouter>
     </div>
