@@ -93,7 +93,7 @@ const Inbox = () => {
           <div className="bg-white p-6 rounded-lg max-w-lg w-full">
             <h3 className="text-xl font-bold mb-2">{selectedMessage.subject}</h3>
             <p className="text-sm text-gray-600 mb-4"><strong>From: </strong> {selectedMessage.name}</p>
-            <p className="text-sm text-gray-600 mb-4"><strong>Subject: </strong>{selectedMessage.subject}</p>
+            <p className="text-sm text-gray-600 mb-4"><strong>Email: </strong>{selectedMessage.email}</p>
             <p className="mb-4">{selectedMessage.message}</p>
             <button onClick={handleClose} className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">Close</button>
           </div>
