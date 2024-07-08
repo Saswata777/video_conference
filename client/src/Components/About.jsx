@@ -33,7 +33,7 @@ const About = () => {
           of four passionate MERN stack developers— <b>Saswata Maitra</b> , <b>Sarbojit
           Saha</b> ,<b>Suvam Manna</b> , and <b>Soham Mondal</b> —currently pursuing our B.Tech
           degrees in Electronics and Communication Engineering at Heritage
-          Institute of Technology, Kolkata. During our internship at Ardent, we
+          Institute of Technology, Kolkata. During our internship, we
           collaborated to create an advanced multi-user video conferencing web
           app, MeetUp. This application not only facilitates seamless video
           communication but also incorporates real-time chat and screen sharing
