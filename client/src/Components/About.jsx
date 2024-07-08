@@ -33,7 +33,7 @@ const About = () => {
           of four passionate MERN stack developers— <b>Saswata Maitra</b> , <b>Sarbojit
           Saha</b> ,<b>Suvam Manna</b> , and <b>Soham Mondal</b> —currently pursuing our B.Tech
           degrees in Electronics and Communication Engineering at Heritage
-          Institute of Technology, Kolkata. During our internship at Ardent, we
+          Institute of Technology, Kolkata. During our internship, we
           collaborated to create an advanced multi-user video conferencing web
           app, MeetUp. This application not only facilitates seamless video
           communication but also incorporates real-time chat and screen sharing
@@ -67,7 +67,7 @@ const About = () => {
               {showMore1 && (
                 <>
                   <p className="mt-2 text-gray-600 text-center">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  MERN Stack Developer| ML Enthusiast |<br/>B.tech student at Heritage Institute of technology
                   </p>
                   <div className="links flex w-20 justify-between mt-3">
                     <div className="linkedin">
@@ -110,7 +110,7 @@ const About = () => {
               {showMore2 && (
                 <>
                   <p className="mt-2 text-gray-600 text-center">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Frontend Web Developer | UI/UX Enthusiast |<br/> B.tech Student at Heritage Institute of Technology
                   </p>
                   <div className="links flex w-20 justify-between mt-3">
                     <div className="linkedin">
@@ -153,7 +153,7 @@ const About = () => {
               {showMore3 && (
                 <>
                   <p className="mt-2 text-gray-600 text-center">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Student at Heritage Institute of Technology 3rd Year
                   </p>
                   <div className="links flex w-20 justify-between mt-3">
                     <div className="linkedin">
@@ -196,7 +196,7 @@ const About = () => {
               {showMore4 && (
                 <>
                   <p className="mt-2 text-gray-600 text-center">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  B tech in Electronics and Communication Engineering
                   </p>
                   <div className="links flex w-20 justify-between mt-3">
                     <div className="linkedin">
