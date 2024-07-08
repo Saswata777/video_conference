@@ -27,7 +27,7 @@ const Dashboard = () => {
 
   const fetchUserCount = () => {
     axios
-      .get("http://localhost:8000/countUsers")
+      .get("https://meetup-server.vercel.app/countUsers")
       .then((response) => {
         setUserCount(response.data.count);
       })

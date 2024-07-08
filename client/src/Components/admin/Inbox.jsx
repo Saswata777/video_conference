@@ -14,7 +14,7 @@ const Inbox = () => {
 
   const fetchData = () => {
     axios
-      .get("http://localhost:8000/getMessage")
+      .get("https://meetup-server.vercel.app/getMessage")
       .then((response) => {
         console.log("API response:", response.data); // Log response for debugging
         setData(response.data);

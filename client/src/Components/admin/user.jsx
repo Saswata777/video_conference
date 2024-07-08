@@ -64,7 +64,7 @@ const User = () => {
 
   const fetchData = () => {
     axios
-      .get("http://localhost:8000/getUsers")
+      .get("https://meetup-server.vercel.app/getUsers")
       .then((response) => {
         setData(response.data);
       })
