@@ -84,7 +84,7 @@ const User = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`http://localhost:8000/getUsers/${id}`)
+          .delete(`https://meetup-server.vercel.app/getUsers/${id}`)
           .then((response) => {
             Swal.fire("Deleted!", "Your data has been deleted.", "success");
             fetchData(); // Refresh the data

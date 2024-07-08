@@ -36,7 +36,7 @@ const Inbox = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`http://localhost:8000/getMessage/${id}`)
+          .delete(`https://meetup-server.vercel.app/getMessage/${id}`)
           .then((response) => {
             Swal.fire("Deleted!", "Your message has been deleted.", "success");
             fetchData(); // Refresh the data
