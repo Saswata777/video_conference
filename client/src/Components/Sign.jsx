@@ -185,7 +185,7 @@ const handlePassc=()=>{
                     value={user.firstName}
                     onChange={handleChange}
                     required
-                    className={`w-full text-sm border ${inputBorderColor} px-4 py-3 rounded-md outline-blue-600 ${textColor}`}
+                    className={`w-full text-sm border ${inputBgColor} ${inputBorderColor} px-4 py-3 rounded-md outline-blue-600 ${textColor}`}
                     placeholder="Enter user name"
                   />
                   <svg xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb" className="w-4 h-4 absolute right-4" viewBox="0 0 24 24">
@@ -203,7 +203,7 @@ const handlePassc=()=>{
                     value={user.lastName}
                     onChange={handleChange}
                     required
-                    className={`w-full text-sm border ${inputBorderColor} px-4 py-3 rounded-md outline-blue-600 ${textColor}`}
+                    className={`w-full text-sm border ${inputBgColor} ${inputBorderColor} px-4 py-3 rounded-md outline-blue-600 ${textColor}`}
                     placeholder="Enter user name"
                   />
                   <svg xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb" className="w-4 h-4 absolute right-4" viewBox="0 0 24 24">
@@ -223,7 +223,7 @@ const handlePassc=()=>{
                   required
                   value={user.username}
                   onChange={handleChange}
-                  className={`w-full text-sm border ${inputBorderColor} px-4 py-3 rounded-md outline-blue-600 ${textColor}`}
+                  className={`w-full text-sm border ${inputBgColor} ${inputBorderColor} px-4 py-3 rounded-md outline-blue-600 ${textColor}`}
                   placeholder="Enter user name"
                 />
                 <svg xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb" className="w-4 h-4 absolute right-4" viewBox="0 0 24 24">
@@ -242,7 +242,7 @@ const handlePassc=()=>{
                     value={user.password}
                     onChange={handleChange}
                     required
-                    className={`w-full text-sm border ${inputBorderColor} px-4 py-3 rounded-md outline-blue-600 ${textColor}`}
+                    className={`w-full text-sm border ${inputBgColor} ${inputBorderColor} px-4 py-3 rounded-md outline-blue-600 ${textColor}`}
                     placeholder="Enter password"
                   />
                   <svg xmlns="http://www.w3.org/2000/svg" onClick={handlePass} fill="#bbb" stroke="#bbb" className="w-4 h-4 absolute right-4 cursor-pointer" viewBox="0 0 128 128">
@@ -259,7 +259,7 @@ const handlePassc=()=>{
                     value={user.confirmpassword}
                     onChange={handleChange}
                     required
-                    className={`w-full text-sm border ${inputBorderColor} px-4 py-3 rounded-md outline-blue-600 ${textColor}`}
+                    className={`w-full text-sm border ${inputBgColor} ${inputBorderColor} px-4 py-3 rounded-md outline-blue-600 ${textColor}`}
                     placeholder="Enter password"
                   />
                   <svg xmlns="http://www.w3.org/2000/svg" onClick={handlePassc} fill="#bbb" stroke="#bbb" className="w-4 h-4 absolute right-4 cursor-pointer" viewBox="0 0 128 128">
